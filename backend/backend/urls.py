@@ -25,6 +25,6 @@ def render_react(request):
 urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r"^apps/.*$", render_react),
-    re_path(r"^$", render_react), ## Use React for empty URLs
+    re_path(r"^$", render_react), # Use React for empty URLs
     #re_path(r"^(?:.*)/?$", render_react), # Use React for every URL
 ]
