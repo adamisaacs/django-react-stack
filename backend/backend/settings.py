@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '192.168.1.3',
+    '8.44.153.35',
 ]
 
 
@@ -121,6 +122,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'build/static'),
+    os.path.join(BASE_DIR, 'build'), # for favicon
 ]
 
 # Default primary key field type
