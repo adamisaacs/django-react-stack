@@ -3,11 +3,9 @@ import './ttt.css';
 
 export default function TTT() {
     return (
-        <div id="home" className="main container p-0">
-            <div className="section">
-                <div className="content w-75 py-5 m-auto">
-                    <Game />
-                </div>
+        <div className="section">
+            <div className="content w-75 py-5 m-auto">
+                <Game />
             </div>
         </div>
     );
@@ -16,7 +14,7 @@ export default function TTT() {
 
 function Square(props) {
     return (
-        <button className="square border border-2 border-dark bg-light fw-bold p-0 text-center float-start" onClick={props.onClick}>
+        <button className="square border rounded-0 border-2 border-dark bg-light fw-bold p-0 text-center float-start" onClick={props.onClick}>
             {props.value}
         </button>
     );
@@ -108,9 +106,9 @@ class Game extends React.Component {
         var xWins = this.state.xWins;
         var oWins = this.state.oWins;
 
-        if (winner == 'X') {
+        if (winner === 'X') {
             xWins += 1;
-        } else if (winner == 'O') {
+        } else if (winner === 'O') {
             oWins += 1;
         }
 
