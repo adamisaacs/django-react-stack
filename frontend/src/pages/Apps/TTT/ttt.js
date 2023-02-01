@@ -3,18 +3,29 @@ import './ttt.css';
 
 export default function TTT() {
     return (
+        <>
+        <div className="section bg-light text-dark">
+            <div className="content w-75 py-5 m-auto">
+                <h1>Tic-Tac-Toe</h1>
+                <p className='fs-5'>
+                    This is a tic-tac-toe game made in React following
+                    the tutorial in the React documentation.
+                </p>
+            </div>
+        </div>
         <div className="section">
             <div className="content w-75 py-5 m-auto">
                 <Game />
             </div>
         </div>
+        </>
     );
 }
 
 
 function Square(props) {
     return (
-        <button className="square border rounded-0 border-2 border-dark bg-light fw-bold p-0 text-center float-start" onClick={props.onClick}>
+        <button className="square border rounded-0 border-2 border-light bg-dark fw-bold p-0 text-center text-light float-start" onClick={props.onClick}>
             {props.value}
         </button>
     );
@@ -157,7 +168,7 @@ class Game extends React.Component {
             );
         } else {
             status = (
-                <div className="h5 alert bg-white border py-2 mb-0 d-inline-block">
+                <div className="h5 alert bg-light text-dark border py-2 mb-0 d-inline-block">
                     Next player: <strong className="font-monospace">{(this.state.xIsNext ? 'X' : 'O')}</strong>
                 </div>
             );
@@ -181,13 +192,13 @@ class Game extends React.Component {
                         <div className="col">
                             <h3 className="text-center">Score</h3>
                             <ul className="list-group m-auto" style={{ maxWidth: '200px' }}>
-                                <li className="h5 my-0 list-group-item d-flex justify-content-between align-items-center">
+                                <li className="h5 my-0 list-group-item d-flex justify-content-between align-items-center bg-light">
                                     X wins
-                                    <span className="badge bg-success rounded-pill">{xWins}</span>
+                                    <span className="badge bg-success rounded-pill text-light">{xWins}</span>
                                 </li>
-                                <li className="h5 my-0 list-group-item d-flex justify-content-between align-items-center">
+                                <li className="h5 my-0 list-group-item d-flex justify-content-between align-items-center bg-light">
                                     O wins:
-                                    <span className="badge bg-success rounded-pill">{oWins}</span>
+                                    <span className="badge bg-success rounded-pill text-light">{oWins}</span>
                                 </li>
                             </ul>
                         </div>

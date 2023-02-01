@@ -1,13 +1,12 @@
 export default function Home() {
     return (
-      <p id="zero-state">
-        This is a demo for React Router.
-        <br />
-        Check out{" "}
-        <a href="https://reactrouter.com">
-          the docs at reactrouter.com
-        </a>
-        .
-      </p>
+        <div className="section bg-light text-dark">
+            <div className="content w-75 py-5 m-auto">
+                <h1>Home</h1>
+                <p className='fs-5'>
+                    Welcome to my portfolio for my web apps.
+                </p>
+            </div>
+        </div>
     );
   }

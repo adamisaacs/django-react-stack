@@ -1,120 +1,68 @@
-import { useEffect } from 'react';
 import {
-  Outlet,
-  NavLink,
-  useLoaderData,
-  Form,
-  redirect,
-  useNavigation,
-  useSubmit,
+    Outlet,
+    useNavigation,
 } from 'react-router-dom';
-import { getContacts, createContact } from './Contacts/contacts';
-import "./root.css";
+import {
+    LinkContainer
+} from 'react-router-bootstrap';
 
-export async function loader({ request }) {
-  const url = new URL(request.url);
-  const q = url.searchParams.get("q");
-  const contacts = await getContacts(q);
-  return { contacts, q };
-}
+import {
+    Container,
+    Nav,
+    Navbar,
+} from 'react-bootstrap';
 
-export async function action() {
-  const contact = await createContact();
-  return redirect(`/contacts/${contact.id}/edit`);
-}
+import './root.css';
+import logo from '../logo.svg';
 
 export default function Root() {
-  const { contacts, q } = useLoaderData();
-  const navigation = useNavigation();
-  const submit = useSubmit();
+    const navigation = useNavigation();
 
-  const searching =
-    navigation.location &&
-    new URLSearchParams(navigation.location.search).has(
-      "q"
-    );
-
-  useEffect(() => {
-    document.getElementById("q").value = q;
-  }, [q]);
-
-  return (
-    <>
-      <div id="sidebar">
-        <h1>React Router Contacts</h1>
-        <div>
-          <Form id="search-form" role="search">
-            <input
-              id="q"
-              className={searching ? 'loading' : ''}
-              aria-label="Search"
-              placeholder="Search"
-              type="search"
-              name="q"
-              defaultValue={q}
-              onChange={(event) => {
-                const isFirstSearch = q == null;
-                submit(event.currentTarget.form, {
-                  replace: !isFirstSearch,
-                });
-              }}
-            />
+    return (
+        <>
+        <div id='sidebar' className='p-4 border-end border-dark bg-light shadow'>
+            <Navbar expand="sm" className='flex-column px-4'>
+                <LinkContainer to="">
+                    <Navbar.Brand className='me-0 p-0'>
+                        <img
+                            src={logo}
+                            width="45"
+                            height="45"
+                            alt="AI logo"
+                        />
+                    </Navbar.Brand>
+                </LinkContainer>
+                <Nav className='flex-column'>
+                    <LinkContainer to=''>
+                        <Nav.Link className='fs-5 px-0'>Home</Nav.Link>
+                    </LinkContainer>
+                    <LinkContainer to='apps'>
+                        <Nav.Link className='fs-5 px-0'>Apps</Nav.Link>
+                    </LinkContainer>
+                    <Container className='px-3'>
+                        <LinkContainer to='apps/ttt'>
+                            <Nav.Link className='fs-5 px-0'>TTT</Nav.Link>
+                        </LinkContainer>
+                    </Container>
+                </Nav>
+            </Navbar>
             <div
-              id="search-spinner"
-              aria-hidden
-              hidden={!searching}
-            />
-            <div
-              className="sr-only"
-              aria-live="polite"
-            ></div>
-          </Form>
-          <Form method="post">
-            <button type="submit">New</button>
-          </Form>
+                id='sidebar-toggle'
+                className='bg-light shadow border-bottom border-end border-dark fs-1 position-absolute top-0 fw-semibold p-2 lh-1 justify-content-center align-items-center'
+                onClick={(event) => {
+                    const sidebar = document.getElementById('sidebar');
+                    sidebar.classList.toggle('open');
+                }}
+            >
+                &equiv;
+            </div>
         </div>
-        <nav>
-          {contacts.length ? (
-            <ul>
-              {contacts.map((contact) => (
-                <li key={contact.id}>
-                  <NavLink
-                    to={`contacts/${contact.id}`}
-                    className={({ isActive, isPending }) =>
-                      isActive
-                        ? "active"
-                        : isPending
-                        ? "pending"
-                        : ""
-                    }
-                  >
-                    {contact.first || contact.last ? (
-                      <>
-                        {contact.first} {contact.last}
-                      </>
-                    ) : (
-                      <i>No Name</i>
-                    )}{" "}
-                    {contact.favorite && <span>★</span>}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p>
-              <i>No contacts</i>
-            </p>
-          )}
-        </nav>
-      </div>
-      <div
-        id="detail"
-        className={
-          navigation.state === "loading" ? "loading" : ""
-        }
-      >
-        <Outlet />
-      </div>
-    </>
-  );
+        <div
+            id='detail'
+            className={ 'flex-grow-1 bg-dark text-light' + (navigation.state === 'loading' ? 'loading' : '') }
+        >
+            <Outlet />
+        </div>
+        </>
+    );
 }

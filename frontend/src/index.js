@@ -1,39 +1,41 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import reportWebVitals from './reportWebVitals';
-import 'bootstrap/dist/css/bootstrap.css';
+import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
 
-import Root, {
-  loader as rootLoader,
-  action as rootAction,
-} from './pages/root';
-
-import ErrorPage from './pages/Error/error';
+import Root from './pages/root';
 import Home from './pages/Home/home';
 import Apps from './pages/Apps/apps';
-import TTT from './pages/TTT/ttt';
-import Contact, {
-  loader as contactLoader,
-  action as contactAction,
-} from './pages/Contacts/contact';
-import EditContact, {
-  action as editAction,
-} from './pages/Contacts/edit';
-import { action as destroyAction } from './pages/Contacts/destroy';
+import TTT from './pages/Apps/TTT/ttt';
+import ErrorPage from './pages/Error/error';
+
+// import ContactsRoot, {
+//   loader as contactsRootLoader,
+//   action as contactsRootAction,
+// } from './pages/Contacts/contactsroot';
+// import ContactsHome from './pages/Contacts/contactshome';
+// import Contact, {
+//   loader as contactLoader,
+//   action as contactAction,
+// } from './pages/Contacts/contact';
+// import EditContact, {
+//   action as editContactAction,
+// } from './pages/Contacts/edit';
+// import {
+//   action as destroyContactAction
+// } from './pages/Contacts/destroy';
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: '',
     element: <Root />,
     errorElement: <ErrorPage />,
-    loader: rootLoader,
-    action: rootAction,
     children: [
       {
         errorElement: <ErrorPage />,
@@ -43,26 +45,52 @@ const router = createBrowserRouter([
             element: <Home />,
           },
           {
-            path: 'contacts/:contactId',
-            element: <Contact />,
-            loader: contactLoader,
-            action: contactAction,
+            path: 'apps/',
+            element: <Apps />,
           },
           {
-            path: 'contacts/:contactId/edit',
-            element: <EditContact />,
-            loader: contactLoader,
-            action: editAction,
-          },
-          {
-            path: 'contacts/:contactId/destroy',
-            action: destroyAction,
-            errorElement: <div>Oops! There was an error.</div>,
-          },
-        ]
+            path: 'apps/ttt/',
+            element: <TTT />,
+          }
+        ],
       },
     ],
   },
+  // {
+  //   path: '/',
+  //   element: <ContactsRoot />,
+  //   errorElement: <ErrorPage />,
+  //   loader: contactsRootLoader,
+  //   action: contactsRootAction,
+  //   children: [
+  //     {
+  //       errorElement: <ErrorPage />,
+  //       children: [
+  //         {
+  //           index: true,
+  //           element: <ContactsHome />,
+  //         },
+  //         {
+  //           path: 'contacts/:contactId',
+  //           element: <Contact />,
+  //           loader: contactLoader,
+  //           action: contactAction,
+  //         },
+  //         {
+  //           path: 'contacts/:contactId/edit',
+  //           element: <EditContact />,
+  //           loader: contactLoader,
+  //           action: editContactAction,
+  //         },
+  //         {
+  //           path: 'contacts/:contactId/destroy',
+  //           action: destroyContactAction,
+  //           errorElement: <div>Oops! There was an error.</div>,
+  //         },
+  //       ]
+  //     },
+  //   ],
+  // },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
