@@ -8,7 +8,7 @@ export default function TTT() {
             <div className="content w-75 py-5 m-auto">
                 <h1>Tic-Tac-Toe</h1>
                 <p className='fs-5'>
-                    This is a tic-tac-toe game made in React following
+                    This is a tic-tac-toe game written with React JS following
                     the tutorial in the React documentation.
                 </p>
             </div>
@@ -182,14 +182,14 @@ class Game extends React.Component {
                         onClick={(i) => this.handleClick(i)}
                     />
                 </div>
-                <div className="game-info w-50 m-auto">
+                <div className="game-info m-auto">
                     <div className="d-flex align-items-center justify-content-center" style={{ height: '50px' }}>
                         <div className="btn-group" role="group">
                             {moves}
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="col">
+                    <div className="row justify-content-center">
+                        <div className="col-7 col-md-5 col-lg-3">
                             <h3 className="text-center">Score</h3>
                             <ul className="list-group m-auto" style={{ maxWidth: '200px' }}>
                                 <li className="h5 my-0 list-group-item d-flex justify-content-between align-items-center bg-light">
@@ -202,7 +202,7 @@ class Game extends React.Component {
                                 </li>
                             </ul>
                         </div>
-                        <div className="col text-center">
+                        <div className="col-7 col-md-5 col-lg-3 text-center">
                             <h3 className="text-center">Status</h3>
                             {status}
                             <div className="mt-2">
