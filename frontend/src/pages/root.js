@@ -48,13 +48,13 @@ export default function Root() {
             </Navbar>
             <div
                 id='sidebar-toggle'
-                className='bg-light shadow border-bottom border-end border-dark fs-1 position-absolute top-0 fw-semibold p-2 lh-1 justify-content-center align-items-center'
+                className='bg-light border border-start-0 border-dark fs-1 position-absolute fw-semibold p-2 lh-1 justify-content-center align-items-center'
                 onClick={(event) => {
                     const sidebar = document.getElementById('sidebar');
                     sidebar.classList.toggle('open');
                 }}
             >
-                &equiv;
+                &#9776;
             </div>
         </div>
         <div

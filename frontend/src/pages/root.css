@@ -1,31 +1,50 @@
 #root {
-    height: 100%;
-    display: flex;
+    display: grid;
+    grid-template-columns: 175px 1fr;
+    grid-template-areas: 'sidebar detail';
+}
+
+#detail {
+    grid-area: detail;
 }
 
 #sidebar {
+    grid-area: sidebar;
+    position: sticky;
+    top: 0;
+    height: 100vh;
     width: 175px;
-    transition: margin .7s ease;
 }
 #sidebar-toggle {
     display: none;
-    margin-top: -7px;
 }
 #sidebar-toggle:hover {
     cursor: pointer;
 }
-@media all and (max-width: 550px) {
-    #sidebar {
-        margin-left: -175px;
+@media all and (max-width: 768px) {
+    #root {
+        display: initial;
+    }
+    #detail {
         position: absolute;
-        height: 100%;
+        top: 0;
+        width: 100%;
+    }
+    #sidebar {
+        transition: margin .7s ease;
+        margin-left: -175px;
         z-index: 1;
     }
     #sidebar.open {
         margin-left: 0 !important;
     }
     #sidebar-toggle {
-        left: 175px;
+        top: 30px;
+        left: 174px;
         display: flex;
     }
 }
+
+
+
+#detail { height: 1200px; }
