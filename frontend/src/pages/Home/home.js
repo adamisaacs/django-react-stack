@@ -46,6 +46,12 @@ class Home extends Component {
             <div className="section-2">
                 <div className="content w-75 py-5 m-auto">
                     <RainbowTitle title='Progressively loading images' type='h2' width='80px' />
+                    <p className='fs-5'>
+                        The image on the left is 1/100 the size of the one on the right, which is almost 8k for the
+                        sake of the demonstration. Reload your browser and check out the progressive image loading.<br />
+                        <span className='fs-6 text-muted'>(<code>Ctrl + Shift + R</code> to clear your cache and&nbsp;
+                        <em>really</em> see it in action)</span>
+                    </p>
                     <Container fluid='true' className='d-flex justify-content-center align-items-center'>
                         <Container fluid='true' className='me-3 me-lg-5 flex-grow-1 w-50'>
                             <Image
