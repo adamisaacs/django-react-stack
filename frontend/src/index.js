@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 import {
   createBrowserRouter,
@@ -14,22 +15,6 @@ import Home from './pages/Home/home';
 import Apps from './pages/Apps/apps';
 import TTT from './pages/Apps/TTT/ttt';
 import ErrorPage from './pages/Error/error';
-
-// import ContactsRoot, {
-//   loader as contactsRootLoader,
-//   action as contactsRootAction,
-// } from './pages/Contacts/contactsroot';
-// import ContactsHome from './pages/Contacts/contactshome';
-// import Contact, {
-//   loader as contactLoader,
-//   action as contactAction,
-// } from './pages/Contacts/contact';
-// import EditContact, {
-//   action as editContactAction,
-// } from './pages/Contacts/edit';
-// import {
-//   action as destroyContactAction
-// } from './pages/Contacts/destroy';
 
 const router = createBrowserRouter([
   {
@@ -56,41 +41,6 @@ const router = createBrowserRouter([
       },
     ],
   },
-  // {
-  //   path: '/',
-  //   element: <ContactsRoot />,
-  //   errorElement: <ErrorPage />,
-  //   loader: contactsRootLoader,
-  //   action: contactsRootAction,
-  //   children: [
-  //     {
-  //       errorElement: <ErrorPage />,
-  //       children: [
-  //         {
-  //           index: true,
-  //           element: <ContactsHome />,
-  //         },
-  //         {
-  //           path: 'contacts/:contactId',
-  //           element: <Contact />,
-  //           loader: contactLoader,
-  //           action: contactAction,
-  //         },
-  //         {
-  //           path: 'contacts/:contactId/edit',
-  //           element: <EditContact />,
-  //           loader: contactLoader,
-  //           action: editContactAction,
-  //         },
-  //         {
-  //           path: 'contacts/:contactId/destroy',
-  //           action: destroyContactAction,
-  //           errorElement: <div>Oops! There was an error.</div>,
-  //         },
-  //       ]
-  //     },
-  //   ],
-  // },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

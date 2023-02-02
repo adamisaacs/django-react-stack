@@ -25,7 +25,7 @@ class RainbowTitle extends Component {
                 null
             }
             <Container
-                className='rainbowhr d-flex ms-1 me-0 mt-2 mb-3 px-0'
+                className='rainbowhr d-flex ms-1 me-0 mt-2 mb-3 px-0 shadow-sm'
                 style={{ width: width, height: thickness }}
             >
                 <Container fluid className='px-0'></Container>

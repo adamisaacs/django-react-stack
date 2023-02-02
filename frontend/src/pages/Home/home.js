@@ -21,21 +21,20 @@ class Home extends Component {
             <Slider images={sliderImages} maxHeight='650px' />
             <div className="section bg-yellow text-dark">
                 <div className="content w-75 py-5 m-auto">
-                    <RainbowTitle title='Home' thickness='3px' width='80px' />
+                    <RainbowTitle title='Portfolio' thickness='3px' width='100px' />
                     <p className='fs-5'>
-                        Welcome to my portfolio for my web apps.
+                        Welcome to my portfolio for my web apps. The logo and color scheme were chosen by&nbsp;
+                        <Link to='https://labs.openai.com/'>DALL·E 2</Link>.
+                        I generated the logo with my initials as the prompt and it happened to choose 5 colors
+                        and put them in the bottom corner, so I decided to use them as the color scheme.
                     </p>
                 </div>
             </div>
             <div className="section bg-teal text-dark">
                 <div className="content w-75 py-5 m-auto">
-                    <RainbowTitle title='Design' type='h2' width='80px' />
+                    <RainbowTitle title='Example' type='h2' width='80px' />
                     <p className='fs-5'>
-                        The logo and color scheme were chosen by&nbsp;
-                        <Link to='https://labs.openai.com/'>DALL·E 2</Link>.
-                        I generated the logo with my initials as the prompt and it happened to
-                        choose 5 colors and put them in the bottom corner, so I decided to use
-                        them as the color scheme.
+                        Lorem ipsum dolor sit amet.
                     </p>
                 </div>
             </div>
