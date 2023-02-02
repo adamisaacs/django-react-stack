@@ -93,14 +93,16 @@ export default function Root() {
                 &#9776;
             </Container>
         </Container>
-        <Container fluid
+        <Container fluid='true'
             id='detail'
             className={
-                'bg-white px-0 flex-grow-1' +
+                'px-0 flex-grow-1' +
                 (navigation.state === 'loading' ? 'loading' : '')
             }
         >
-            <Outlet />
+            <Container fluid='true' className='px-0 bg-white mx-auto'>
+                <Outlet />
+            </Container>
         </Container>
         </>
     );

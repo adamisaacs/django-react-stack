@@ -5,6 +5,11 @@ import {
 } from 'react-router-dom';
 
 import Slider from '../../components/slider/slider';
+import ProgressiveImage from '../../components/progressive-image/progressive-image';
+import placeholderExample from './curiosity-small.jpg';
+import fullExample from './curiosity-large.jpg';
+import arrow from './arrow-right.png';
+import { Container, Image } from 'react-bootstrap';
 
 
 class Home extends Component {
@@ -16,9 +21,17 @@ class Home extends Component {
         const sliderImages = this.importAll(
             require.context('./slider-images', false, /\.(jpg|png)$/)
         );
+        const sliderProgressives = this.importAll(
+            require.context('./slider-images/progressives', false, /\.(jpg|png)$/)
+        );
+
         return (
             <>
-            <Slider images={sliderImages} maxHeight='650px' />
+            <Slider
+                images={sliderImages}
+                progressives={sliderProgressives}
+                maxHeight='650px'
+            />
             <div className="section-1">
                 <div className="content w-75 py-5 m-auto">
                     <RainbowTitle title='Portfolio' thickness='3px' width='100px' />
@@ -32,10 +45,39 @@ class Home extends Component {
             </div>
             <div className="section-2">
                 <div className="content w-75 py-5 m-auto">
-                    <RainbowTitle title='Example' type='h2' width='80px' />
-                    <p className='fs-5'>
-                        Lorem ipsum dolor sit amet.
-                    </p>
+                    <RainbowTitle title='Progressively loading images' type='h2' width='80px' />
+                    <Container fluid='true' className='d-flex justify-content-center align-items-center'>
+                        <Container fluid='true' className='me-3 me-lg-5 flex-grow-1 w-50'>
+                            <Image
+                                src={placeholderExample}
+                                width='100%'
+                                alt='Curiosity on Mars in low quality'
+                                className='shadow-lg'
+                            />
+                        </Container>
+                        <Container fluid='true' className='flex-grow-1 w-50'>
+                            <ProgressiveImage
+                                placeholderImage={placeholderExample}
+                                src={fullExample}
+                                alt='Curiosity on Mars'
+                                width='100%'
+                                className='shadow-lg'
+                            />
+                        </Container>
+                    </Container>
+                    <Container
+                            className='mx-auto'
+                            style={{
+                                width:'35%',
+                                marginTop: '-8%',
+                                zIndex: '1',
+                            }}
+                        >
+                            <Image
+                                src={arrow}
+                                width='100%'
+                            />
+                        </Container>
                 </div>
             </div>
             <div className="section-3">

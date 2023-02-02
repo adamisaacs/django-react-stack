@@ -9,17 +9,17 @@ html, body {
 }
 
 .bg-yellow, .section-1 {
-    background-color: rgba(255, 255, 102, .04);
+    background-color: rgba(255, 255, 102, .06);
 }
 .bg-teal, .section-2 {
-    background-color: rgba(66, 255, 255, .04);
+    background-color: rgba(66, 255, 255, .06);
 }
 .bg-green, .section-3 {
-    background-color: rgba(81, 218, 76, .04);
+    background-color: rgba(81, 218, 76, .06);
 }
 .bg-orange, .section-4 {
-    background-color: rgba(255, 110, 60, .04);
+    background-color: rgba(255, 110, 60, .06);
 }
 .bg-purple, .section-5 {
-    background-color: rgba(60, 70, 255, .04);
+    background-color: rgba(60, 70, 255, .06);
 }

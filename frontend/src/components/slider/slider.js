@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import {
-    Carousel,
-    Image
+    Carousel
 } from 'react-bootstrap';
+import ProgressiveImage from '../progressive-image/progressive-image';
+import './slider.css';
 
 class Slider extends Component {
     static defaultProps = {
@@ -13,19 +14,24 @@ class Slider extends Component {
 
     render() {
         const maxHeight = this.props.maxHeight;
-        const slides = this.props.images.map((image) =>
+        const slides = this.props.images.map((image, index) =>
             <Carousel.Item>
-                <Image
+                <ProgressiveImage
                     className='w-100'
+                    placeholderImage={this.props.progressives[index]}
                     src={image}
                     alt={'Slide ' + image.id}
+                    width='100%'
                 />
             </Carousel.Item>
         );
+
         return (
+            <>
             <Carousel variant={this.props.variant} className='overflow-hidden' style={{ maxHeight: maxHeight }}>
                 {slides}
             </Carousel>
+            </>
         );
     }
 }

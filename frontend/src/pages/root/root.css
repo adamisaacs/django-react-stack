@@ -2,11 +2,14 @@
     display: grid;
     grid-template-columns: 200px 1fr;
     grid-template-areas: 'sidebar detail';
-    background-color: rgba(33, 37, 41, 0.5);
 }
 
 #detail {
     grid-area: detail;
+    background-color: rgba(40, 44, 48, 0.5);
+}
+
+#detail > div {
     max-width: 1300px;
 }
 

@@ -1,0 +1,9 @@
+.carousel-control-prev {
+    z-index: 0;
+}
+
+@media all and (min-width:768px) {
+    .carousel {
+        min-height: 500px;
+    }
+}
