@@ -15,7 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path, include
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+
+
+def add_trailing_slash(request, permanent=True):
+    path = request.path
+    return redirect(path + '/', permanent=permanent)
 
 
 def render_react(request):
@@ -23,9 +28,10 @@ def render_react(request):
 
 
 urlpatterns = [
+    re_path(r'^(?!.*/$)(.+)$', add_trailing_slash),
     path('admin/', admin.site.urls),
-    path('', include('home.urls')),
+    path('/', include('home.urls')),
     path('apps/', include('apps.urls')),
-    path('apps/ttt', include('ttt.urls')),
-    re_path(r"^(?:.*)/?$", render_react), # Use React for every other URL (404 handling, etc)
+    path('apps/ttt/', include('ttt.urls')),
+    re_path(r'^(?:.*)/?$', render_react), # Use React for every other URL (404 handling, etc)
 ]

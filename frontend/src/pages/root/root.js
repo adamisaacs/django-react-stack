@@ -32,7 +32,7 @@ export default function Root() {
             className='d-flex flex-column justify-content-between border-end shadow bg-light'
         >
             <Navbar expand="sm" className='flex-column py-5'>
-                <LinkContainer to="">
+                <LinkContainer to="/">
                     <Navbar.Brand className='me-0 p-0'>
                         <Image
                             src={logo}
@@ -43,18 +43,18 @@ export default function Root() {
                     </Navbar.Brand>
                 </LinkContainer>
                 <Nav className='flex-column'>
-                    <LinkContainer to=''>
+                    <LinkContainer to='/'>
                         <Nav.Link className='fs-5 px-0'>
                             Home
                         </Nav.Link>
                     </LinkContainer>
-                    <LinkContainer to='apps'>
+                    <LinkContainer to='apps/'>
                         <Nav.Link className='fs-5 px-0'>
                             Apps
                         </Nav.Link>
                     </LinkContainer>
                     <Container className='px-3'>
-                        <LinkContainer to='apps/ttt'>
+                        <LinkContainer to='apps/ttt/'>
                             <Nav.Link className='fs-5 px-0'>
                                 Tic-Tac-Toe
                             </Nav.Link>
