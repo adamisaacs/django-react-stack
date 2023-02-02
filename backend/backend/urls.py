@@ -14,17 +14,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, re_path
+from django.urls import path, re_path, include
 from django.shortcuts import render
 
 
 def render_react(request):
-    return render(request, "index.html")
+    return render(request, "base.html")
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    re_path(r"^apps/.*$", render_react),
-    re_path(r"^$", render_react), # Use React for empty URLs
-    #re_path(r"^(?:.*)/?$", render_react), # Use React for every URL
+    path('', include('home.urls')),
+    path('apps/', include('apps.urls')),
+    path('apps/ttt', include('ttt.urls')),
+    re_path(r"^(?:.*)/?$", render_react), # Use React for every other URL (404 handling, etc)
 ]
