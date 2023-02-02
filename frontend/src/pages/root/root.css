@@ -15,36 +15,34 @@
     height: 100vh;
     width: 175px;
 }
-#sidebar-toggle {
-    display: none;
-}
+
 #sidebar-toggle:hover {
     cursor: pointer;
 }
-@media all and (max-width: 768px) {
+
+@media all and (max-width: 767px) {
     #root {
         display: initial;
     }
+
     #detail {
         position: absolute;
         top: 0;
         width: 100%;
     }
+
     #sidebar {
         transition: margin .7s ease;
         margin-left: -175px;
         z-index: 1;
     }
+
     #sidebar.open {
         margin-left: 0 !important;
     }
+
     #sidebar-toggle {
         top: 30px;
         left: 174px;
-        display: flex;
     }
 }
-
-
-
-#detail { height: 1200px; }

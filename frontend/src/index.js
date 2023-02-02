@@ -9,7 +9,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-import Root from './pages/root';
+import Root from './pages/root/root';
 import Home from './pages/Home/home';
 import Apps from './pages/Apps/apps';
 import TTT from './pages/Apps/TTT/ttt';

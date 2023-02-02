@@ -1,3 +1,25 @@
+/* yellow rgb(255, 255, 102) */
+/* teal rgb(66, 255, 255) */
+/* green rgb(81, 218, 76) */
+/* orange rgb(255, 110, 60) */
+/* purple rgb(60, 70, 255) */
+
 html, body {
     height: 100%;
+}
+
+.bg-yellow {
+    background-color: rgba(255, 255, 102, .05);
+}
+.bg-teal {
+    background-color: rgba(66, 255, 255, .05);
+}
+.bg-green {
+    background-color: rgba(81, 218, 76, .05);
+}
+.bg-orange {
+    background-color: rgba(255, 110, 60, .05);
+}
+.bg-purple {
+    background-color: rgba(60, 70, 255, .05);
 }

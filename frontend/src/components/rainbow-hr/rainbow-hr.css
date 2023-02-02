@@ -1,0 +1,19 @@
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0;
+}
+
+.rainbowhr > div:nth-of-type(1) {
+    background-color: rgb(255, 255, 102);
+}
+.rainbowhr > div:nth-of-type(2) {
+    background-color: rgb(66, 255, 255);
+}
+.rainbowhr > div:nth-of-type(3) {
+    background-color: rgb(81, 218, 76);
+}
+.rainbowhr > div:nth-of-type(4) {
+    background-color: rgb(255, 110, 60);
+}
+.rainbowhr > div:nth-of-type(5) {
+    background-color: rgb(60, 70, 255);
+}
