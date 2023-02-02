@@ -8,18 +8,18 @@ html, body {
     height: 100%;
 }
 
-.bg-yellow {
+.bg-yellow, .section-1 {
     background-color: rgba(255, 255, 102, .04);
 }
-.bg-teal {
+.bg-teal, .section-2 {
     background-color: rgba(66, 255, 255, .04);
 }
-.bg-green {
+.bg-green, .section-3 {
     background-color: rgba(81, 218, 76, .04);
 }
-.bg-orange {
+.bg-orange, .section-4 {
     background-color: rgba(255, 110, 60, .04);
 }
-.bg-purple {
+.bg-purple, .section-5 {
     background-color: rgba(60, 70, 255, .04);
 }

@@ -96,7 +96,7 @@ export default function Root() {
         <Container fluid
             id='detail'
             className={
-                'px-0 flex-grow-1' +
+                'bg-white px-0 flex-grow-1' +
                 (navigation.state === 'loading' ? 'loading' : '')
             }
         >

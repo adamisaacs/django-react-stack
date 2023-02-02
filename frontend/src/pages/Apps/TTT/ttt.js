@@ -4,7 +4,7 @@ import './ttt.css';
 export default function TTT() {
     return (
         <>
-        <div className="section bg-light text-dark">
+        <div className="section-1">
             <div className="content w-75 py-5 m-auto">
                 <h1>Tic-Tac-Toe</h1>
                 <p className='fs-5'>
@@ -13,7 +13,7 @@ export default function TTT() {
                 </p>
             </div>
         </div>
-        <div className="section">
+        <div className="section-2">
             <div className="content w-75 py-5 m-auto">
                 <Game />
             </div>
