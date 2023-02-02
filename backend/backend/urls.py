@@ -30,7 +30,7 @@ def render_react(request):
 urlpatterns = [
     re_path(r'^(?!.*/$)(.+)$', add_trailing_slash),
     path('admin/', admin.site.urls),
-    path('/', include('home.urls')),
+    path('', include('home.urls')),
     path('apps/', include('apps.urls')),
     path('apps/ttt/', include('ttt.urls')),
     re_path(r'^(?:.*)/?$', render_react), # Use React for every other URL (404 handling, etc)
