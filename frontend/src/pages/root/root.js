@@ -76,7 +76,7 @@ export default function Root() {
                         secondWidth='2px'
                         minuteWidth='4px'
                         hourWidth='6px'
-                        bgColor='rgb(230, 240, 250)'
+                        bgColor='rgb(230, 235, 240)'
                         />
                 </Container>
                 <Container className='d-flex justify-content-center align-items-center border-top py-2 fs-5 lh-1'>

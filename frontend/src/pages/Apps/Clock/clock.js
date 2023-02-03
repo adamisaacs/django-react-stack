@@ -23,6 +23,7 @@ export default function Clock() {
                     secondWidth='8px'
                     minuteWidth='16px'
                     hourWidth='24px'
+                    bgColor='white'
                 />
             </div>
         </div>
