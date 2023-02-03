@@ -30,7 +30,7 @@ class Home extends Component {
             <Slider
                 images={sliderImages}
                 progressives={sliderProgressives}
-                maxHeight='650px'
+                maxHeight='600px'
             />
             <div className="section-1">
                 <div className="content w-75 py-5 m-auto">

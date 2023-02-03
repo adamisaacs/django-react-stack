@@ -4,6 +4,6 @@
 
 @media all and (min-width:768px) {
     .carousel {
-        min-height: 500px;
+        min-height: 600px;
     }
 }

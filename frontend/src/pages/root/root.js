@@ -84,7 +84,7 @@ export default function Root() {
             </Container>
             <Container
                 id='sidebar-toggle'
-                className='d-md-none w-auto bg-light border border-start-0 border-dark fs-1 position-absolute p-2 lh-1'
+                className='d-md-none w-auto bg-light border border-start-0 border-dark fs-1 position-absolute lh-1'
                 onClick={(event) => {
                     const sidebar = document.getElementById('sidebar');
                     sidebar.classList.toggle('open');
