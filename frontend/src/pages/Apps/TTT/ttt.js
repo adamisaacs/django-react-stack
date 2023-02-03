@@ -9,8 +9,9 @@ export default function TTT() {
             <div className="content w-75 py-5 m-auto">
                 <RainbowTitle title='Tic-Tac-Toe' thickness='3px' width='100px' />
                 <p className='fs-5'>
-                    This is the first React app I wrote as my introduction to the framework.
+                    This is the first React component I wrote as my introduction to the framework.
                     It's a tic-tac-toe game following the tutorial in the React documentation.
+                    I also added a few minor features, such as better win tracking and status.
                 </p>
             </div>
         </div>
@@ -26,7 +27,7 @@ export default function TTT() {
 
 function Square(props) {
     return (
-        <button className="square border rounded-0 border-2 border-light bg-dark fw-bold p-0 text-center text-light float-start" onClick={props.onClick}>
+        <button className="square border rounded-0 border-3 border-dark bg-transparent fw-bold p-0 text-center float-start" onClick={props.onClick}>
             {props.value}
         </button>
     );

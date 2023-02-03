@@ -10,16 +10,17 @@ function SecondHand(props) {
                 transform: props.angle,
                 height: '100%',
                 position: 'absolute',
-                paddingBottom: '50%'
+                paddingBottom: '50%',
             }}
         >
             <Container
-                className='bg-danger m-0 p-0 rounded-pill'
+                className='bg-danger ms-0 my-0 p-0 rounded-pill'
                 style={{
                     width: props.width,
                     height: '95%',
                     position: 'relative',
                     bottom: props.offset,
+                    marginRight: '1px',
                 }}
             ></Container>
         </Container>
@@ -34,16 +35,17 @@ function MinuteHand(props) {
                 transform: props.angle,
                 height: '100%',
                 position: 'absolute',
-                paddingBottom: '50%'
+                paddingBottom: '50%',
             }}
         >
             <Container
-                className='bg-dark m-0 p-0 rounded-pill'
+                className='bg-dark ms-0 my-0 p-0 rounded-pill'
                 style={{
                     width: props.width,
                     height: '80%',
                     position: 'relative',
                     bottom: props.offset,
+                    marginRight: '1px',
                 }}
             ></Container>
         </Container>
@@ -58,16 +60,17 @@ function HourHand(props) {
                 transform: props.angle,
                 height: '100%',
                 position: 'absolute',
-                paddingBottom: '50%'
+                paddingBottom: '50%',
             }}
         >
             <Container
-                className='bg-black m-0 p-0 rounded-pill'
+                className='bg-black ms-0 my-0 p-0 rounded-pill'
                 style={{
                     width: props.width,
                     height: '60%',
                     position: 'relative',
                     bottom: props.offset,
+                    marginRight: '1px',
                 }}
             ></Container>
         </Container>

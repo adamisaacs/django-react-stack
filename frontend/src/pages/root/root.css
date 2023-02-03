@@ -20,6 +20,7 @@
     top: 0;
     height: 100vh;
     width: 200px;
+    z-index: 10;
 }
 
 #sidebar-toggle:hover {
@@ -40,14 +41,13 @@
 
     #detail {
         position: absolute;
-        top: 0;
         width: 100%;
+        height: 100%;
     }
 
     #sidebar {
         transition: margin .7s ease;
         margin-left: -200px;
-        z-index: 1;
     }
 
     #sidebar.open {

@@ -23,6 +23,7 @@ import djangologo from './django-logo.svg';
 
 import Clock from '../../components/clock/clock';
 
+
 export default function Root() {
     const navigation = useNavigation();
 
