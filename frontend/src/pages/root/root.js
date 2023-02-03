@@ -71,12 +71,12 @@ export default function Root() {
             <Container id='sidebar-footer'>
                 <Container className='d-flex justify-content-center align-items-center border-top py-3 fs-5 lh-1'>
                     <Clock
-                        width='100px'
-                        height='100px'
+                        width='120px'
+                        height='120px'
                         secondWidth='2px'
                         minuteWidth='4px'
                         hourWidth='6px'
-                        offset='-4px'
+                        bgColor='rgb(230, 240, 250)'
                         />
                 </Container>
                 <Container className='d-flex justify-content-center align-items-center border-top py-2 fs-5 lh-1'>

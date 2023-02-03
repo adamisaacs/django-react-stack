@@ -14,11 +14,12 @@ function SecondHand(props) {
             }}
         >
             <Container
-                className='bg-danger mx-0 mt-0 p-0 rounded-pill'
+                className='bg-danger m-0 p-0 rounded-pill'
                 style={{
                     width: props.width,
                     height: '95%',
-                    marginBottom: props.offset,
+                    position: 'relative',
+                    bottom: props.offset,
                 }}
             ></Container>
         </Container>
@@ -37,11 +38,12 @@ function MinuteHand(props) {
             }}
         >
             <Container
-                className='bg-dark mx-0 mt-0 p-0 rounded-pill'
+                className='bg-dark m-0 p-0 rounded-pill'
                 style={{
                     width: props.width,
                     height: '80%',
-                    marginBottom: props.offset,
+                    position: 'relative',
+                    bottom: props.offset,
                 }}
             ></Container>
         </Container>
@@ -60,11 +62,12 @@ function HourHand(props) {
             }}
         >
             <Container
-                className='bg-black mx-0 mt-0 p-0 rounded-pill'
+                className='bg-black m-0 p-0 rounded-pill'
                 style={{
                     width: props.width,
                     height: '60%',
-                    marginBottom: props.offset,
+                    position: 'relative',
+                    bottom: props.offset,
                 }}
             ></Container>
         </Container>
@@ -82,10 +85,11 @@ function Dot() {
             }}
         >
             <Container
-                className='bg-black mx-0 mt-0 p-0 rounded-circle'
+                className='bg-black me-0 mt-0 p-0 rounded-circle'
                 style={{
                     width: '2px',
                     height: '2px',
+                    marginLeft: '1px',
                     marginBottom: '-1px',
                 }}
             ></Container>
@@ -116,10 +120,9 @@ function Tick(props) {
 }
 
 function Ticks(props) {
-    const arr12 = new Array(12).fill(null);
     return (
         <Container fluid='true' className="ticks w-100" style={{ height: '100%'}}>
-            {arr12.map((i, index) => {
+            {Array(12).fill(null).map((i, index) => {
                 const angle = 'rotate(' + (index * 30) + 'deg)';
                 return <Tick key={index} angle={angle} width={props.width} />;
             })}
@@ -136,8 +139,12 @@ class Clock extends React.Component {
     }
 
     static defaultProps = {
-        width: '50px',
-        height: '50px',
+        width: '300px',
+        height: '300px',
+        secondWidth: '5px',
+        minuteWidth: '10px',
+        hourWidth: '15px',
+        bgColor: 'rgb(248, 249, 250)',
     };
 
     componentDidMount() {
@@ -165,7 +172,7 @@ class Clock extends React.Component {
 
         return (
             <Container fluid='true'
-                className='clock d-flex mx-auto align-items-center bg-light border-dark rounded-circle'
+                className='clock d-flex mx-auto align-items-center border-dark rounded-circle'
                 style={{
                     width: this.props.width,
                     maxWidth: '100%',
@@ -174,11 +181,12 @@ class Clock extends React.Component {
                     position: 'relative',
                     borderStyle: 'solid',
                     borderWidth: this.props.minuteWidth,
+                    backgroundColor: this.props.bgColor,
                 }}
             >
-                <HourHand angle={anglesCSS[0]} width={this.props.hourWidth} offset={this.props.offset} />
-                <MinuteHand angle={anglesCSS[1]} width={this.props.minuteWidth} offset={this.props.offset} />
-                <SecondHand angle={anglesCSS[2]} width={this.props.secondWidth} offset={this.props.offset} />
+                <HourHand angle={anglesCSS[0]} width={this.props.hourWidth} offset={'-' + this.props.minuteWidth} />
+                <MinuteHand angle={anglesCSS[1]} width={this.props.minuteWidth} offset={'-' + this.props.minuteWidth} />
+                <SecondHand angle={anglesCSS[2]} width={this.props.secondWidth} offset={'-' + this.props.minuteWidth} />
                 <Dot />
                 <Ticks width={this.props.minuteWidth} />
             </Container>
