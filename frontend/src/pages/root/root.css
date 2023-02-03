@@ -7,7 +7,7 @@
 
 #detail {
     grid-area: detail;
-    background-color: rgba(40, 44, 48, 0.5);
+    background-color: rgb(80, 90, 100);
 }
 
 #detail > div {

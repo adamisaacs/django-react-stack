@@ -1,15 +1,16 @@
 import React from 'react';
 import './ttt.css';
+import RainbowTitle from '../../../components/rainbow-hr/rainbow-hr';
 
 export default function TTT() {
     return (
         <>
         <div className="section-1">
             <div className="content w-75 py-5 m-auto">
-                <h1>Tic-Tac-Toe</h1>
+                <RainbowTitle title='Tic-Tac-Toe' thickness='3px' width='100px' />
                 <p className='fs-5'>
-                    This is a tic-tac-toe game written with React JS following
-                    the tutorial in the React documentation.
+                    This is the first React app I wrote as my introduction to the framework.
+                    It's a tic-tac-toe game following the tutorial in the React documentation.
                 </p>
             </div>
         </div>
@@ -194,11 +195,15 @@ class Game extends React.Component {
                             <ul className="list-group m-auto" style={{ maxWidth: '200px' }}>
                                 <li className="h5 my-0 list-group-item d-flex justify-content-between align-items-center bg-light">
                                     X wins
-                                    <span className="badge bg-success rounded-pill text-light">{xWins}</span>
+                                    <span className="badge bg-success rounded-pill text-light">
+                                        {xWins}
+                                    </span>
                                 </li>
                                 <li className="h5 my-0 list-group-item d-flex justify-content-between align-items-center bg-light">
                                     O wins:
-                                    <span className="badge bg-success rounded-pill text-light">{oWins}</span>
+                                    <span className="badge bg-success rounded-pill text-light">
+                                        {oWins}
+                                    </span>
                                 </li>
                             </ul>
                         </div>

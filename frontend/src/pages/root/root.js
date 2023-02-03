@@ -21,6 +21,7 @@ import reactbootstraplogo from './reactbootstrap-logo.svg';
 import reactlogo from './react-logo.svg';
 import djangologo from './django-logo.svg';
 
+import Clock from '../../components/clock/clock';
 
 export default function Root() {
     const navigation = useNavigation();
@@ -59,10 +60,25 @@ export default function Root() {
                                 Tic-Tac-Toe
                             </Nav.Link>
                         </LinkContainer>
+                        <LinkContainer to='apps/clock/'>
+                            <Nav.Link className='fs-5 px-0'>
+                                Clock
+                            </Nav.Link>
+                        </LinkContainer>
                     </Container>
                 </Nav>
             </Navbar>
             <Container id='sidebar-footer'>
+                <Container className='d-flex justify-content-center align-items-center border-top py-3 fs-5 lh-1'>
+                    <Clock
+                        width='120px'
+                        height='120px'
+                        secondWidth='2px'
+                        minuteWidth='4px'
+                        hourWidth='6px'
+                        bgColor='rgb(230, 240, 250)'
+                        />
+                </Container>
                 <Container className='d-flex justify-content-center align-items-center border-top py-2 fs-5 lh-1'>
                     <i className="bi bi-house-door"></i>&nbsp;
                     <i className="bi bi-box-arrow-in-right"></i>
