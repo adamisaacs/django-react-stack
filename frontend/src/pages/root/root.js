@@ -56,14 +56,19 @@ export default function Root() {
                         </Nav.Link>
                     </LinkContainer>
                     <Container className='px-3'>
-                        <LinkContainer to='apps/ttt/'>
+                        <LinkContainer to='apps/iss/'>
                             <Nav.Link className='fs-5 px-0'>
-                                Tic-Tac-Toe
+                                Where's the ISS?
                             </Nav.Link>
                         </LinkContainer>
                         <LinkContainer to='apps/clock/'>
                             <Nav.Link className='fs-5 px-0'>
-                                Clock
+                                Circular Clock
+                            </Nav.Link>
+                        </LinkContainer>
+                        <LinkContainer to='apps/ttt/'>
+                            <Nav.Link className='fs-5 px-0'>
+                                Tic-Tac-Toe
                             </Nav.Link>
                         </LinkContainer>
                     </Container>
@@ -72,8 +77,8 @@ export default function Root() {
             <Container id='sidebar-footer'>
                 <Container className='d-flex justify-content-center align-items-center border-top py-3 fs-5 lh-1'>
                     <Clock
-                        width='120px'
-                        height='120px'
+                        width='140px'
+                        height='140px'
                         secondWidth='2px'
                         minuteWidth='4px'
                         hourWidth='6px'

@@ -15,6 +15,7 @@ import Home from './pages/Home/home';
 import Apps from './pages/Apps/apps';
 import TTT from './pages/Apps/TTT/ttt';
 import Clock from './pages/Apps/Clock/clock';
+import ISS from './pages/Apps/ISS/iss';
 import ErrorPage from './pages/Error/error';
 
 const router = createBrowserRouter([
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
           {
             path: 'apps/clock/',
             element: <Clock />,
+          },
+          {
+            path: 'apps/iss/',
+            element: <ISS />,
           },
         ],
       },
