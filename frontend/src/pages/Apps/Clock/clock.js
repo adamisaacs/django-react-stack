@@ -6,7 +6,7 @@ import RainbowTitle from '../../../components/rainbow-hr/rainbow-hr';
 export default function Clock() {
     return (
         <>
-        <div className="section-1">
+        <div className="section">
             <div className="content w-75 py-5 m-auto">
             <RainbowTitle title='Circular Clock' thickness='3px' width='100px' />
                 <p className='fs-5'>
@@ -17,7 +17,7 @@ export default function Clock() {
                 </p>
             </div>
         </div>
-        <div className="section-2">
+        <div className="section">
             <div className="content w-75 py-5 m-auto">
                 <ClockElement
                     width='400px'

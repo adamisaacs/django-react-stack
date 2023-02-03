@@ -5,7 +5,7 @@ import RainbowTitle from '../../../components/rainbow-hr/rainbow-hr';
 export default function TTT() {
     return (
         <>
-        <div className="section-1">
+        <div className="section">
             <div className="content w-75 py-5 m-auto">
                 <RainbowTitle title='Tic-Tac-Toe' thickness='3px' width='100px' />
                 <p className='fs-5'>
@@ -15,7 +15,7 @@ export default function TTT() {
                 </p>
             </div>
         </div>
-        <div className="section-2">
+        <div className="section">
             <div className="content w-75 py-5 m-auto">
                 <Game />
             </div>
