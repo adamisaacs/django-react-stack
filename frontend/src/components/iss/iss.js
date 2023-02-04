@@ -2,11 +2,11 @@ import React, { useEffect, useRef } from 'react';
 import { Container } from 'react-bootstrap';
 import { Wrapper } from '@googlemaps/react-wrapper';
 import ISSImage from './iss-icon-black.png';
+import Sun from './sun.png';
 import Badge from 'react-bootstrap/Badge';
 
 function Map(props) {
     const center = new window.google.maps.LatLng(props.center[0], props.center[1]);
-    const zoom = 3;
     const ref = useRef();
     const mapRef = useRef(null);
     const markerRef = useRef(null);
@@ -15,8 +15,9 @@ function Map(props) {
     useEffect(() => {
         if (!mapRef.current) {
             mapRef.current = new window.google.maps.Map(ref.current, {
-                center,
-                zoom,
+                center: center,
+                zoom: 3,
+                mapTypeId: 'satellite',
             });
             markerRef.current = new window.google.maps.Marker({
                 position: center,
@@ -36,6 +37,39 @@ function Map(props) {
                 center: center,
                 radius: 2196314.04,
             });
+
+            const time = new Date();
+            const curHour = time.getHours();
+            const curMinute = time.getMinutes();
+            const curSecond = time.getSeconds();
+            const offsetX = ((curHour * 3600 + curMinute * 60 + curSecond) / 86400) * 360 - 205;
+
+            const dayOfYear = (time.getMonth() * 30.4 + time.getDate()) / 365;
+            const offsetY = -Math.sin(2 * Math.PI * (dayOfYear - 81) / 365) * 47 - 23.5;
+
+            new window.google.maps.Circle({
+                map: mapRef.current,
+                center: new window.google.maps.LatLng(offsetY, offsetX),
+                radius: 10000000,
+                fillColor: "#000",
+                fillOpacity: 0.3,
+                strokeOpacity: 0,
+                clickable: false,
+                editable: false
+            });
+            new window.google.maps.Marker({
+                position: new window.google.maps.LatLng(-1 * offsetY, offsetX + 180),
+                map: mapRef.current,
+                icon: {
+                    url: Sun,
+                    anchor: new window.google.maps.Point(20, 20),
+                }
+            });
+
+
+
+
+
         } else {
             mapRef.current.panTo(center);
             markerRef.current.setPosition(center);
@@ -148,7 +182,7 @@ class ISS extends React.Component {
         if (error) {
             const loading = 'Loading...';
             return (
-                <Container fluid='true' style={{ height: mapHeight}}>
+                <Container fluid='true' style={{ height: mapHeight }}>
                     {error}
                     <this.RenderISS
                         name={loading}
@@ -172,7 +206,7 @@ class ISS extends React.Component {
                         velocity={loading}
                         exposure={loading}
                     />
-                    <Container fluid='true' style={{ height: mapHeight}} />
+                    <Container fluid='true' style={{ height: mapHeight }} />
                 </>
             );
         } else {
