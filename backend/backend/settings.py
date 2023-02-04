@@ -44,8 +44,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Added
+    'rest_framework',
+    'api.apps.ApiConfig',
     'home.apps.HomeConfig',
     'apps.apps.AppsConfig',
+    'iss.apps.IssConfig',
+    'clock.apps.ClockConfig',
     'ttt.apps.TttConfig',
 ]
 

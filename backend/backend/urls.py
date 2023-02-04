@@ -29,9 +29,16 @@ def render_react(request):
 
 urlpatterns = [
     re_path(r'^(?!.*/$)(.+)$', add_trailing_slash),
+
     path('admin/', admin.site.urls),
+
+    path('api/', include('api.urls')),
+
     path('', include('home.urls')),
     path('apps/', include('apps.urls')),
+    path('apps/iss/', include('iss.urls')),
+    path('apps/clock/', include('clock.urls')),
     path('apps/ttt/', include('ttt.urls')),
-    re_path(r'^(?:.*)/?$', render_react), # Use React for every other URL (404 handling, etc)
+
+    #re_path(r'^(?:.*)/?$', render_react), # Use React for every other URL (404 handling, etc)
 ]
