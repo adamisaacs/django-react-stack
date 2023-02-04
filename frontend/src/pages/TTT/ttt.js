@@ -1,6 +1,6 @@
 import React from 'react';
 import './ttt.css';
-import RainbowTitle from '../../../components/rainbow-hr/rainbow-hr';
+import RainbowTitle from '../../components/rainbow-hr/rainbow-hr';
 import { Container } from 'react-bootstrap';
 
 export default function TTT() {

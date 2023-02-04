@@ -13,9 +13,9 @@ import {
 import Root from './pages/root/root';
 import Home from './pages/Home/home';
 import Apps from './pages/Apps/apps';
-import TTT from './pages/Apps/TTT/ttt';
-import Clock from './pages/Apps/Clock/clock';
-import ISS from './pages/Apps/ISS/iss';
+import TTT from './pages/TTT/ttt';
+import Clock from './pages/Clock/clock';
+import ISS from './pages/ISS/iss';
 import ErrorPage from './pages/Error/error';
 
 const router = createBrowserRouter([

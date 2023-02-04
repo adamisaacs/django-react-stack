@@ -1,6 +1,6 @@
 import React from 'react';
-import RainbowTitle from '../../../components/rainbow-hr/rainbow-hr';
-import ISSComponent from '../../../components/iss/iss';
+import RainbowTitle from '../../components/rainbow-hr/rainbow-hr';
+import ISSComponent from '../../components/iss/iss';
 import { Container } from 'react-bootstrap';
 
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import ClockComponent from '../../../components/clock/clock';
-import RainbowTitle from '../../../components/rainbow-hr/rainbow-hr';
+import ClockComponent from '../../components/clock/clock';
+import RainbowTitle from '../../components/rainbow-hr/rainbow-hr';
 
 
 export default function Clock() {
