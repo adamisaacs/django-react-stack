@@ -9,7 +9,8 @@ import ProgressiveImage from '../../components/progressive-image/progressive-ima
 import placeholderExample from './curiosity-small.jpg';
 import fullExample from './curiosity-large.jpg';
 import arrow from './arrow-right.png';
-import { Container, Image } from 'react-bootstrap';
+import { Button, Container, Image } from 'react-bootstrap';
+import GitHubLogo from './github-logo.png';
 
 
 class Home extends Component {
@@ -32,9 +33,9 @@ class Home extends Component {
                     progressives={sliderProgressives}
                     maxHeight='600px'
                 />
-                <div>
-                    <div className="section">
-                        <div className="content w-75 py-5 m-auto">
+                <Container fluid='true'>
+                    <Container fluid='true' className="section">
+                        <Container fluid='true' className="content w-75 py-5 m-auto">
                             <RainbowTitle title='Portfolio' thickness='3px' width='100px' />
                             <p className='fs-5'>
                                 Welcome to my portfolio for my web apps. The logo and color scheme were chosen by&nbsp;
@@ -42,14 +43,15 @@ class Home extends Component {
                                 I generated the logo with my initials as the prompt and it happened to put 5 colored pixels
                                 in the bottom corner, so I decided to use them as the color scheme.
                             </p>
-                        </div>
-                    </div>
-                    <div className="section">
-                        <div className="content w-75 py-5 m-auto">
+                        </Container>
+                    </Container>
+                    <Container fluid='true' className="section">
+                        <Container fluid='true' className="content w-75 py-5 m-auto">
                             <RainbowTitle title='Progressively loading images' type='h2' width='80px' />
                             <p className='fs-5'>
-                                The image on the left is 1/100<sup>th</sup> the size of the one on the right, which is almost 8k for the
-                                sake of the demonstration. Reload your browser and check out the progressive image loading.<br />
+                                The image on the left is 1/100<sup>th</sup> the size of the one on the right, which is almost
+                                8k for the sake of the demonstration. Reload your browser and check out the progressive image
+                                loading.<br />
                                 <span className='fs-6 text-muted'>(<code>Ctrl + Shift + R</code> to clear your cache and&nbsp;
                                     <em>really</em> see it in action)</span>
                             </p>
@@ -72,7 +74,7 @@ class Home extends Component {
                                     />
                                 </Container>
                             </Container>
-                            <Container
+                            <Container fluid='true'
                                 className='mx-auto'
                                 style={{
                                     width: '35%',
@@ -85,33 +87,38 @@ class Home extends Component {
                                     width='100%'
                                 />
                             </Container>
-                        </div>
-                    </div>
-                    <div className="section">
-                        <div className="content w-75 py-5 m-auto">
+                        </Container>
+                    </Container>
+                    <Container fluid='true' className="section">
+                        <Container fluid='true' className="content w-75 py-5 m-auto">
+                            <RainbowTitle title='Available on GitHub' type='h2' width='80px' />
+                            <p className='fs-5 m-0'>
+                                The entire site is in a public repository on&nbsp;
+                                <Link to='https://github.com/adamisaacs/django-react-stack' className='text-decoration-none' target='_blank' rel='noreferrer'>
+                                    <Button className="button-hover fs-5 border-2 border-dark bg-light p-2 text-dark lh-1 d-inline-flex align-items-center">
+                                        <Image src={GitHubLogo} width='30' className='me-2' /> GitHub
+                                    </Button>
+                                </Link>
+                            </p>
+                        </Container>
+                    </Container>
+                    <Container fluid='true' className="section">
+                        <Container fluid='true' className="content w-75 py-5 m-auto">
                             <RainbowTitle title='Example' type='h2' width='80px' />
                             <p className='fs-5'>
                                 Lorem ipsum dolor sit amet.
                             </p>
-                        </div>
-                    </div>
-                    <div className="section">
-                        <div className="content w-75 py-5 m-auto">
+                        </Container>
+                    </Container>
+                    <Container fluid='true' className="section">
+                        <Container fluid='true' className="content w-75 py-5 m-auto">
                             <RainbowTitle title='Example' type='h2' width='80px' />
                             <p className='fs-5'>
                                 Lorem ipsum dolor sit amet.
                             </p>
-                        </div>
-                    </div>
-                    <div className="section">
-                        <div className="content w-75 py-5 m-auto">
-                            <RainbowTitle title='Example' type='h2' width='80px' />
-                            <p className='fs-5'>
-                                Lorem ipsum dolor sit amet.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                        </Container>
+                    </Container>
+                </Container>
             </>
         );
     }

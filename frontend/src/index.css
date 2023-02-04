@@ -8,6 +8,17 @@ html, body {
     height: 100%;
 }
 
+.button-hover:hover {
+    box-shadow: none;
+    margin: 1px 0 0 !important;
+}
+
+.button-hover {
+    box-shadow: 0 2px 5px -3px black;
+    margin: 0 0 1px !important;
+    transition: all .1s linear;
+}
+
 .shadow-dark {
     box-shadow: 1px 1px 5px -1px #999;
 }

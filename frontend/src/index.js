@@ -36,16 +36,16 @@ const router = createBrowserRouter([
             element: <Apps />,
           },
           {
-            path: 'apps/ttt/',
-            element: <TTT />,
+            path: 'apps/iss/',
+            element: <ISS />,
           },
           {
             path: 'apps/clock/',
             element: <Clock />,
           },
           {
-            path: 'apps/iss/',
-            element: <ISS />,
+            path: 'apps/ttt/',
+            element: <TTT />,
           },
         ],
       },

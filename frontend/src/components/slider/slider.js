@@ -15,7 +15,7 @@ class Slider extends Component {
     render() {
         const maxHeight = this.props.maxHeight;
         const slides = this.props.images.map((image, index) =>
-            <Carousel.Item>
+            <Carousel.Item key={index}>
                 <ProgressiveImage
                     className='w-100'
                     placeholderImage={this.props.progressives[index]}
