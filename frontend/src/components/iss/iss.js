@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Container } from 'react-bootstrap';
 import { Wrapper } from '@googlemaps/react-wrapper';
-import './iss.css';
 import ISSImage from './iss-icon-black.png';
 import Badge from 'react-bootstrap/Badge';
 
@@ -44,7 +43,14 @@ function Map(props) {
         }
     });
 
-    return <Container fluid='true' ref={ref} id="map" className='stretch' />;
+    return (
+        <Container fluid='true'
+            ref={ref}
+            id="map"
+            className='stretch'
+            style={{ height: props.height }}
+        />
+    );
 }
 
 class ISS extends React.Component {
@@ -56,6 +62,10 @@ class ISS extends React.Component {
             info: [],
         }
     }
+
+    static defaultProps = {
+        height: '100px',
+    };
 
     runAPI() {
         fetch("https://api.wheretheiss.at/v1/satellites/25544?units=miles")
@@ -102,23 +112,29 @@ class ISS extends React.Component {
         return (
             <>
                 <Container fluid='true' className='d-flex flex-wrap justify-content-center mb-3'>
-                    <Badge bg='none' className='shadow-dark mb-3 me-3 fs-5 bg-purple-dark'>
-                        Name: <span className='fw-normal'>{props.name}</span>
+                    <Badge bg='none' className='shadow-dark mb-3 me-3 bg-light text-dark px-3 py-2'>
+                        <small className='fw-light'>Name:</small><br />
+                        <span className='fw-normal fs-6'>{props.name}</span>
                     </Badge>
-                    <Badge bg='none' className='shadow-dark mb-3 me-3 fs-5 bg-purple-dark'>
-                        Latitude: <span className='fw-normal'>{props.latitude}</span>
+                    <Badge bg='none' className='shadow-dark mb-3 me-3 bg-light text-dark px-3 py-2'>
+                        <small className='fw-light'>Latitude:</small><br />
+                        <span className='fw-normal fs-6'>{props.latitude}</span>
                     </Badge>
-                    <Badge bg='none' className='shadow-dark mb-3 me-3 fs-5 bg-purple-dark'>
-                        Longitude: <span className='fw-normal'>{props.longitude}</span>
+                    <Badge bg='none' className='shadow-dark mb-3 me-3 bg-light text-dark px-3 py-2'>
+                        <small className='fw-light'>Longitude:</small><br />
+                        <span className='fw-normal fs-6'>{props.longitude}</span>
                     </Badge>
-                    <Badge bg='none' className='shadow-dark mb-3 me-3 fs-5 bg-purple-dark'>
-                        Altitude: <span className='fw-normal'>{props.altitude}</span>
+                    <Badge bg='none' className='shadow-dark mb-3 me-3 bg-light text-dark px-3 py-2'>
+                        <small className='fw-light'>Altitude:</small><br />
+                        <span className='fw-normal fs-6'>{props.altitude}</span>
                     </Badge>
-                    <Badge bg='none' className='shadow-dark mb-3 me-3 fs-5 bg-purple-dark'>
-                        Velocity: <span className='fw-normal'>{props.velocity}</span>
+                    <Badge bg='none' className='shadow-dark mb-3 me-3 bg-light text-dark px-3 py-2'>
+                        <small className='fw-light'>Velocity:</small><br />
+                        <span className='fw-normal fs-6'>{props.velocity}</span>
                     </Badge>
-                    <Badge bg='none' className='shadow-dark mb-3 me-3 fs-5 bg-purple-dark'>
-                        Sun exposure: <span className='fw-normal'>{props.exposure}</span>
+                    <Badge bg='none' className='shadow-dark mb-3 me-3 bg-light text-dark px-3 py-2'>
+                        <small className='fw-light'>Sun exposure:</small><br />
+                        <span className='fw-normal fs-6'>{props.exposure}</span>
                     </Badge>
                 </Container>
             </>
@@ -127,11 +143,12 @@ class ISS extends React.Component {
 
     render() {
         const { error, isLoaded, info } = this.state;
+        const mapHeight = this.props.mapHeight;
 
         if (error) {
             const loading = 'Loading...';
             return (
-                <Container fluid='true' style={{ height: '500px' }}>
+                <Container fluid='true' style={{ height: mapHeight}}>
                     {error}
                     <this.RenderISS
                         name={loading}
@@ -155,7 +172,7 @@ class ISS extends React.Component {
                         velocity={loading}
                         exposure={loading}
                     />
-                    <Container fluid='true' style={{ height: '500px' }} />
+                    <Container fluid='true' style={{ height: mapHeight}} />
                 </>
             );
         } else {
@@ -170,7 +187,7 @@ class ISS extends React.Component {
             const render = function (status) {
                 if (status === "FAILURE") return status;
                 return (
-                    <Container fluid='true' style={{ height: '500px' }}>
+                    <Container fluid='true' style={{ height: mapHeight }}>
                         {status}
                     </Container>
                 );
@@ -187,7 +204,7 @@ class ISS extends React.Component {
                         exposure={visibility}
                     />
                     <Wrapper apiKey={APIKey} render={render}>
-                        <Map center={[info.latitude, info.longitude]} />
+                        <Map center={[info.latitude, info.longitude]} height={mapHeight} />
                     </Wrapper>
                 </>
             );

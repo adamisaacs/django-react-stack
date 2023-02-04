@@ -12,7 +12,7 @@ export default function TTT() {
                 <p className='fs-5'>
                     This is the first React component I wrote as my introduction to the framework.
                     It's a tic-tac-toe game following the tutorial in the React documentation.
-                    I also added a few minor features, such as better win tracking and status.
+                    I also added a few minor features, such as better win tracking and statuses.
                 </p>
             </Container>
         </Container>
