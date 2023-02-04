@@ -1,5 +1,51 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Container } from 'react-bootstrap';
+import { Wrapper } from '@googlemaps/react-wrapper';
+import './iss.css';
+import ISSImage from './iss-icon-black.png';
+import Badge from 'react-bootstrap/Badge';
+
+function Map(props) {
+    const center = new window.google.maps.LatLng(props.center[0], props.center[1]);
+    const zoom = 3;
+    const ref = useRef();
+    const mapRef = useRef(null);
+    const markerRef = useRef(null);
+    const circleRef = useRef(null);
+
+    useEffect(() => {
+        if (!mapRef.current) {
+            mapRef.current = new window.google.maps.Map(ref.current, {
+                center,
+                zoom,
+            });
+            markerRef.current = new window.google.maps.Marker({
+                position: center,
+                map: mapRef.current,
+                icon: {
+                    url: ISSImage,
+                    anchor: new window.google.maps.Point(70, 39),
+                }
+            });
+            circleRef.current = new window.google.maps.Circle({
+                strokeColor: "rgb(60, 70, 255)",
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: "rgb(60, 70, 255)",
+                fillOpacity: 0.35,
+                map: mapRef.current,
+                center: center,
+                radius: 2196314.04,
+            });
+        } else {
+            mapRef.current.panTo(center);
+            markerRef.current.setPosition(center);
+            circleRef.current.setCenter(center);
+        }
+    });
+
+    return <Container fluid='true' ref={ref} id="map" className='stretch' />;
+}
 
 class ISS extends React.Component {
     constructor(props) {
@@ -13,7 +59,12 @@ class ISS extends React.Component {
 
     runAPI() {
         fetch("https://api.wheretheiss.at/v1/satellites/25544?units=miles")
-            .then(res => res.json())
+            .then(res => {
+                if (res.status === 429) {
+                    throw new Error("Too many requests");
+                }
+                return res.json();
+            })
             .then(
                 (result) => {
                     this.setState({
@@ -24,7 +75,7 @@ class ISS extends React.Component {
                 (error) => {
                     this.setState({
                         isLoaded: true,
-                        error
+                        error: error.toString()
                     });
                 },
             )
@@ -35,7 +86,7 @@ class ISS extends React.Component {
 
         this.timerID = setInterval(
             () => this.updateInfo(),
-            1000//860
+            3000//860
         );
     }
 
@@ -47,32 +98,64 @@ class ISS extends React.Component {
         this.runAPI();
     }
 
+    RenderISS(props) {
+        return (
+            <>
+                <Container fluid='true' className='d-flex flex-wrap justify-content-center mb-3'>
+                    <Badge bg='none' className='shadow-dark mb-3 me-3 fs-5 bg-purple-dark'>
+                        Name: <span className='fw-normal'>{props.name}</span>
+                    </Badge>
+                    <Badge bg='none' className='shadow-dark mb-3 me-3 fs-5 bg-purple-dark'>
+                        Latitude: <span className='fw-normal'>{props.latitude}</span>
+                    </Badge>
+                    <Badge bg='none' className='shadow-dark mb-3 me-3 fs-5 bg-purple-dark'>
+                        Longitude: <span className='fw-normal'>{props.longitude}</span>
+                    </Badge>
+                    <Badge bg='none' className='shadow-dark mb-3 me-3 fs-5 bg-purple-dark'>
+                        Altitude: <span className='fw-normal'>{props.altitude}</span>
+                    </Badge>
+                    <Badge bg='none' className='shadow-dark mb-3 me-3 fs-5 bg-purple-dark'>
+                        Velocity: <span className='fw-normal'>{props.velocity}</span>
+                    </Badge>
+                    <Badge bg='none' className='shadow-dark mb-3 me-3 fs-5 bg-purple-dark'>
+                        Sun exposure: <span className='fw-normal'>{props.exposure}</span>
+                    </Badge>
+                </Container>
+            </>
+        );
+    }
+
     render() {
         const { error, isLoaded, info } = this.state;
 
         if (error) {
-            return 'uh oh';
+            const loading = 'Loading...';
+            return (
+                <Container fluid='true' style={{ height: '500px' }}>
+                    {error}
+                    <this.RenderISS
+                        name={loading}
+                        latitude={loading}
+                        longitude={loading}
+                        altitude={loading}
+                        velocity={loading}
+                        exposure={loading}
+                    />
+                </Container>
+            );
         } else if (!isLoaded) {
+            const loading = 'Loading...';
             return (
                 <>
-                    <Container fluid='true'>
-                        Name: Loading...
-                    </Container>
-                    <Container fluid='true'>
-                        Latitude: Loading...
-                    </Container>
-                    <Container fluid='true'>
-                        Longitude: Loading...
-                    </Container>
-                    <Container fluid='true'>
-                        Altitude: Loading...
-                    </Container>
-                    <Container fluid='true'>
-                        Velocity: Loading...
-                    </Container>
-                    <Container fluid='true'>
-                        Sun exposure: Loading...
-                    </Container>
+                    <this.RenderISS
+                        name={loading}
+                        latitude={loading}
+                        longitude={loading}
+                        altitude={loading}
+                        velocity={loading}
+                        exposure={loading}
+                    />
+                    <Container fluid='true' style={{ height: '500px' }} />
                 </>
             );
         } else {
@@ -83,26 +166,29 @@ class ISS extends React.Component {
             const velocity = parseFloat(info.velocity).toFixed(2);
             const visibility = info.visibility.charAt(0).toUpperCase() + info.visibility.slice(1);
 
+            const APIKey = 'AIzaSyCv7wdh7CpBPDKHaRcVjG5G7D6Jrq1qx2o';
+            const render = function (status) {
+                if (status === "FAILURE") return status;
+                return (
+                    <Container fluid='true' style={{ height: '500px' }}>
+                        {status}
+                    </Container>
+                );
+            };
+
             return (
                 <>
-                    <Container fluid='true'>
-                        Name: {name}
-                    </Container>
-                    <Container fluid='true'>
-                        Latitude: {latitude} degrees <small>(negative means southern hemisphere)</small>
-                    </Container>
-                    <Container fluid='true'>
-                        Longitude: {longitude} degrees <small>(negative means western hemisphere)</small>
-                    </Container>
-                    <Container fluid='true'>
-                        Altitude: {altitude} miles high
-                    </Container>
-                    <Container fluid='true'>
-                        Velocity: {velocity} mph
-                    </Container>
-                    <Container fluid='true'>
-                        Sun exposure: {visibility}
-                    </Container>
+                    <this.RenderISS
+                        name={name}
+                        latitude={latitude + ' degrees'}
+                        longitude={longitude + ' degrees'}
+                        altitude={altitude + ' miles high'}
+                        velocity={velocity + ' mph'}
+                        exposure={visibility}
+                    />
+                    <Wrapper apiKey={APIKey} render={render}>
+                        <Map center={[info.latitude, info.longitude]} />
+                    </Wrapper>
                 </>
             );
         }

@@ -1,25 +1,26 @@
 import React from 'react';
 import './ttt.css';
 import RainbowTitle from '../../../components/rainbow-hr/rainbow-hr';
+import { Container } from 'react-bootstrap';
 
 export default function TTT() {
     return (
         <>
-        <div className="section">
-            <div className="content w-75 py-5 m-auto">
+        <Container fluid='true' className="section">
+            <Container fluid='true' className="content w-75 py-5 m-auto">
                 <RainbowTitle title='Tic-Tac-Toe' thickness='3px' width='100px' />
                 <p className='fs-5'>
                     This is the first React component I wrote as my introduction to the framework.
                     It's a tic-tac-toe game following the tutorial in the React documentation.
                     I also added a few minor features, such as better win tracking and status.
                 </p>
-            </div>
-        </div>
-        <div className="section">
-            <div className="content w-75 py-5 m-auto">
+            </Container>
+        </Container>
+        <Container fluid='true' className="section">
+            <Container fluid='true' className="content w-75 py-5 m-auto">
                 <Game />
-            </div>
-        </div>
+            </Container>
+        </Container>
         </>
     );
 }
