@@ -16,7 +16,7 @@ function Map(props) {
         if (!mapRef.current) {
             mapRef.current = new window.google.maps.Map(ref.current, {
                 center: center,
-                zoom: 3,
+                zoom: 4,
                 mapTypeId: 'satellite',
             });
             markerRef.current = new window.google.maps.Marker({
@@ -42,10 +42,10 @@ function Map(props) {
             const curHour = time.getHours();
             const curMinute = time.getMinutes();
             const curSecond = time.getSeconds();
-            const offsetX = ((curHour * 3600 + curMinute * 60 + curSecond) / 86400) * 360 - 205;
+            const offsetX = (-((curHour * 3600 + curMinute * 60 + curSecond) / 86400) * 360) - 104;
 
             const dayOfYear = (time.getMonth() * 30.4 + time.getDate()) / 365;
-            const offsetY = -Math.sin(2 * Math.PI * (dayOfYear - 81) / 365) * 47 - 23.5;
+            const offsetY = (-Math.sin(2 * Math.PI * (dayOfYear - 81) / 365) * 180) - 160;
 
             new window.google.maps.Circle({
                 map: mapRef.current,
