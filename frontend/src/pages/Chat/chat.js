@@ -12,7 +12,7 @@ export default function Chat() {
                     <RainbowTitle title="Chat" thickness='3px' width='100px' />
                     <p className='fs-5'>
                         Use this chat application to chat anonymously with your friends. It polls the server
-                        for new chats every half second, so you'll never miss out on the most recent messages.
+                        for new chats every half second and displays the 100 most recent messages.
                     </p>
                 </Container>
             </Container>

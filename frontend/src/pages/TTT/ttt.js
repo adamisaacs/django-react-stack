@@ -10,9 +10,9 @@ export default function TTT() {
             <Container fluid='true' className="content w-75 py-5 m-auto">
                 <RainbowTitle title='Tic-Tac-Toe' thickness='3px' width='100px' />
                 <p className='fs-5'>
-                    This is the first React component I wrote as my introduction to the framework.
-                    It's a tic-tac-toe game following the tutorial in the React documentation.
-                    I also added a few minor features, such as better win tracking and statuses.
+                    I wrote this component as my introduction to the React framework. I followed
+                    the tutorial in their documentation to make the game. I also added a few minor
+                    features, such as better win tracking and statuses.
                 </p>
             </Container>
         </Container>

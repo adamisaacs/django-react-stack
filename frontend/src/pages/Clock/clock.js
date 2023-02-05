@@ -12,9 +12,7 @@ export default function Clock() {
             <RainbowTitle title='Circular Clock' thickness='3px' width='100px' />
                 <p className='fs-5'>
                     This is the first React component I wrote on my own. It's a simple clock
-                    that runs off the client's time and updates through CSS. The next goal
-                    for the clock is to add a time zone selector, with the end goal being to
-                    update the clock to the users' time zone automatically once users are added.
+                    that runs off the client's time and updates through CSS.
                 </p>
             </Container>
         </Container>

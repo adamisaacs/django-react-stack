@@ -17,6 +17,11 @@ export default function Apps() {
             <Container fluid='true' id='apps-list' className="section">
                 <Container fluid='true' className="content w-75 py-5 m-auto">
                     <Container fluid='true' className="d-flex justify-content-around flex-wrap">
+                        <Link to='chat/' className="text-decoration-none mb-3 me-3">
+                            <Button className="button-hover fs-3 border border-dark border-3 bg-light px-4 py-3 text-dark">
+                                <i class="bi bi-chat-dots"></i> Chat
+                            </Button>
+                        </Link>
                         <Link to='todo/' className="text-decoration-none mb-3 me-3">
                             <Button className="button-hover fs-3 border border-dark border-3 bg-light px-4 py-3 text-dark">
                                 <i class="bi bi-card-list"></i> To-do List
