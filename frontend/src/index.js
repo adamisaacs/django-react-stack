@@ -16,6 +16,7 @@ import Apps from './pages/Apps/apps';
 import TTT from './pages/TTT/ttt';
 import Clock from './pages/Clock/clock';
 import ISS from './pages/ISS/iss';
+import Todo from './pages/Todo/todo';
 import ErrorPage from './pages/Error/error';
 
 const router = createBrowserRouter([
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
           {
             path: 'apps/',
             element: <Apps />,
+          },
+          {
+            path: 'apps/todo/',
+            element: <Todo />,
           },
           {
             path: 'apps/iss/',

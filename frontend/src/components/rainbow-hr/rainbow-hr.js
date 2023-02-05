@@ -16,23 +16,23 @@ class RainbowTitle extends Component {
         const { title, type, thickness, width } = this.props;
         return (
             <>
-            { type === 'h1' ? <h1>{title}</h1> :
-                type === 'h2' ? <h2>{title}</h2> :
-                type === 'h3' ? <h3>{title}</h3> :
-                type === 'h4' ? <h4>{title}</h4> :
-                type === 'h5' ? <h5>{title}</h5> :
-                type === 'h6' ? <h6>{title}</h6> :
+            { type === 'h1' ? <h1 className='text-break'>{title}</h1> :
+                type === 'h2' ? <h2 className='text-break'>{title}</h2> :
+                type === 'h3' ? <h3 className='text-break'>{title}</h3> :
+                type === 'h4' ? <h4 className='text-break'>{title}</h4> :
+                type === 'h5' ? <h5 className='text-break'>{title}</h5> :
+                type === 'h6' ? <h6 className='text-break'>{title}</h6> :
                 null
             }
             <Container
                 className='rainbowhr d-flex ms-1 me-0 mt-2 mb-3 px-0 shadow-sm'
                 style={{ width: width, height: thickness }}
             >
-                <Container fluid className='px-0'></Container>
-                <Container fluid className='px-0'></Container>
-                <Container fluid className='px-0'></Container>
-                <Container fluid className='px-0'></Container>
-                <Container fluid className='px-0'></Container>
+                <Container className='px-0'></Container>
+                <Container className='px-0'></Container>
+                <Container className='px-0'></Container>
+                <Container className='px-0'></Container>
+                <Container className='px-0'></Container>
             </Container>
             </>
         );

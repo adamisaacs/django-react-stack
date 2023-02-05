@@ -8,4 +8,5 @@ class TodoSerializer(serializers.HyperlinkedModelSerializer):
             'url',
             'title',
             'description',
+            'created',
         ]
