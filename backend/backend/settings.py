@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'api.apps.ApiConfig',
     'home.apps.HomeConfig',
     'apps.apps.AppsConfig',
+    'chat.apps.ChatConfig',
     'todo.apps.TodoConfig',
     'iss.apps.IssConfig',
     'clock.apps.ClockConfig',

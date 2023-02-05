@@ -13,6 +13,7 @@ import {
 import Root from './pages/root/root';
 import Home from './pages/Home/home';
 import Apps from './pages/Apps/apps';
+import Chat from './pages/Chat/chat';
 import TTT from './pages/TTT/ttt';
 import Clock from './pages/Clock/clock';
 import ISS from './pages/ISS/iss';
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
           {
             path: 'apps/',
             element: <Apps />,
+          },
+          {
+            path: 'apps/chat/',
+            element: <Chat />,
           },
           {
             path: 'apps/todo/',

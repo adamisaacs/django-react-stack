@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Todo
+from .models import Todo, Chat
 
 class TodoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -9,4 +9,15 @@ class TodoSerializer(serializers.HyperlinkedModelSerializer):
             'title',
             'description',
             'created',
+        ]
+
+
+class ChatSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Chat
+        fields = [
+            'url',
+            'user',
+            'message',
+            'messageTime',
         ]

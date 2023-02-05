@@ -56,6 +56,11 @@ export default function Root() {
                             </Nav.Link>
                         </LinkContainer>
                         <Container className='px-3'>
+                            <LinkContainer to='apps/chat/'>
+                                <Nav.Link className='fs-5 px-0'>
+                                    Chat
+                                </Nav.Link>
+                            </LinkContainer>
                             <LinkContainer to='apps/todo/'>
                                 <Nav.Link className='fs-5 px-0'>
                                     To-do List
