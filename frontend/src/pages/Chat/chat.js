@@ -11,7 +11,8 @@ export default function Chat() {
                 <Container fluid='true' className="content w-75 py-5 m-auto">
                     <RainbowTitle title="Chat" thickness='3px' width='100px' />
                     <p className='fs-5'>
-                        Chat application.
+                        Use this chat application to chat anonymously with your friends. It polls the server
+                        for new chats every second, so you'll never miss out on the recent messages.
                     </p>
                 </Container>
             </Container>
