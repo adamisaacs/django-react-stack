@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     # Added
     'rest_framework',
     'corsheaders',
+    'sslserver',
     'api.apps.ApiConfig',
     'home.apps.HomeConfig',
     'apps.apps.AppsConfig',
@@ -153,6 +154,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Added
 APPEND_SLASH = True
 
+CORS_ALLOW_ALL_ORIGINS = True
+
 # CORS_ALLOWED_ORIGINS = [
 #     'http://localhost',
 #     'http://localhost:3000',
@@ -160,28 +163,10 @@ APPEND_SLASH = True
 #     'http://192.168.1.3:3000',
 #     'http://192.168.1.3:8000',
 #     'http://8.44.153.35',
+#     'https://localhost',
+#     'https://localhost:3000',
+#     'https://localhost:8000',
+#     'https://192.168.1.3:3000',
+#     'https://192.168.1.3:8000',
+#     'https://8.44.153.35',
 # ]
-
-# CORS_ALLOW_CREDENTIALS = True
-
-CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOW_METHODS = (
-    'DELETE',
-    'GET',
-    'OPTIONS',
-    'PATCH',
-    'POST',
-    'PUT',
-)
-CORS_ALLOW_HEADERS = (
-    'accept',
-    'accept-encoding',
-    'authorization',
-    'content-type',
-    'dnt',
-    'origin',
-    'user-agent',
-    'x-csrftoken',
-    'x-requested-with',
-)

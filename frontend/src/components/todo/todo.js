@@ -16,6 +16,8 @@ function Edit(props) {
     const handleSave = (e) => {
         e.preventDefault();
 
+        const csrf_token = document.getElementsByName('csrfmiddlewaretoken')[0].value;
+
         const form = e.target;
         if (form.checkValidity() === false) {
             e.stopPropagation();
@@ -28,6 +30,7 @@ function Edit(props) {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
+                    'X-CSRFToken': csrf_token
                 },
                 body: jsonData,
             })
@@ -99,14 +102,17 @@ function Add(props) {
     const handleSave = (e) => {
         e.preventDefault();
 
+        const csrf_token = document.getElementsByName('csrfmiddlewaretoken')[0].value;
+
         const formData = new FormData(e.target);
         const data = Object.fromEntries(formData);
         const jsonData = JSON.stringify(data);
 
-        fetch('http://192.168.1.3:8000/api/todos/', {
+        fetch('https://192.168.1.3:8000/api/todos/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'X-CSRFToken': csrf_token
             },
             body: jsonData,
         })
@@ -180,10 +186,13 @@ function Delete(props) {
     const handleDelete = (e) => {
         e.preventDefault();
 
+        const csrf_token = document.getElementsByName('csrfmiddlewaretoken')[0].value;
+
         fetch(props.info.url, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
+                'X-CSRFToken': csrf_token
             },
         })
             .then((response) => {
@@ -282,7 +291,7 @@ class Todo extends React.Component {
     }
 
     runAPI() {
-        fetch('http://192.168.1.3:8000/api/todos/')
+        fetch('https://192.168.1.3:8000/api/todos/')
             .then(res => res.json())
             .then(
                 (result) => {
