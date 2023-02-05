@@ -36,6 +36,7 @@ urlpatterns = [
 
     path('', include('home.urls')),
     path('apps/', include('apps.urls')),
+    path('apps/todo/', include('todo.urls')),
     path('apps/iss/', include('iss.urls')),
     path('apps/clock/', include('clock.urls')),
     path('apps/ttt/', include('ttt.urls')),
