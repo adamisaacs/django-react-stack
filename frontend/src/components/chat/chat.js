@@ -25,8 +25,7 @@ function MessageBox(props) {
             body: jsonData,
         })
             .then((response) => response.json())
-            .then((data) => {
-                props.sendMessage(data);
+            .then(() => {
                 const messageBox = document.getElementById('message-box');
                 messageBox.value = '';
             })
@@ -75,17 +74,6 @@ class Chat extends React.Component {
         }
     }
 
-    sendMessage = (data) => {
-        const updatedData = this.state.info;
-        updatedData.push(data);
-        this.setState({
-            info: updatedData,
-        }, () => {
-            const messages = document.getElementById('messages');
-            messages.scrollTop = messages.scrollHeight;
-        });
-    }
-
     runAPI() {
         fetch('https://192.168.1.3:8000/api/chats/')
             .then(res => res.json())
@@ -121,7 +109,7 @@ class Chat extends React.Component {
 
         this.timerID = setInterval(
             () => this.updateInfo(),
-            1000
+            500
         );
     }
 
@@ -163,7 +151,7 @@ class Chat extends React.Component {
                             id='messages' className='border border-dark border-2 bg-white p-2 mb-3'
                             style={{ height: '500px', overflowY: 'scroll' }}
                         >
-                            {info.map((info, index) => (
+                            {info.slice(-100).map((info, index) => (
                                 <Container key={index} fluid='true' id='message'>
                                     <strong>{info.user}:</strong> {info.message}
                                 </Container>
