@@ -14,7 +14,7 @@ function TrainingComponent(props) {
 
         const csrf_token = document.getElementsByName('csrfmiddlewaretoken')[0].value;
 
-        fetch('https://192.168.1.3:8000/api/train_network/', {
+        fetch('https://192.168.1.3:8000/api/neuralnets/', {
             method: 'POST',
             headers: {
                 'X-CSRFToken': csrf_token,
@@ -92,7 +92,8 @@ class NeuralNet extends React.Component {
         } else {
             return (
                 <Container fluid='true'>
-                    Accuracy: {(data.accuracy * 100).toFixed(2)}%
+                    Model: {data.model}
+                    {/* Accuracy: {(data.accuracy * 100).toFixed(2)}% */}
                     <TrainingComponent updateData={this.updateData} updateLoading={this.updateLoading} />
                 </Container>
             );

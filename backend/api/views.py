@@ -1,10 +1,8 @@
-from rest_framework import viewsets, views
+from rest_framework import viewsets
 from rest_framework.response import Response
 
-from .serializers import TodoSerializer, ChatSerializer, TrainNetworkSerializer
-from .models import Todo, Chat
-
-from .components.neuralnet import train_network
+from .serializers import TodoSerializer, ChatSerializer, NeuralNetSerializer
+from .models import Todo, Chat, NeuralNet
 
 
 # Create your views here.
@@ -18,11 +16,7 @@ class ChatViewSet(viewsets.ModelViewSet):
     serializer_class = ChatSerializer
 
 
-
 # Neural Network
-class TrainNetworkView(views.APIView):
-    serializer_class = TrainNetworkSerializer
-
-    def post(self, request, format=None):
-        accuracy = train_network()
-        return Response({'accuracy': accuracy})
+class NeuralNetViewSet(viewsets.ModelViewSet):
+    queryset = NeuralNet.objects.all().order_by('created')
+    serializer_class = NeuralNetSerializer

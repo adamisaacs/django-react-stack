@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Todo, Chat
+from .models import Todo, Chat, NeuralNet
 
 class TodoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -23,5 +23,11 @@ class ChatSerializer(serializers.HyperlinkedModelSerializer):
         ]
 
 
-class TrainNetworkSerializer(serializers.Serializer):
-    pass
+class NeuralNetSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = NeuralNet
+        fields = [
+            'url',
+            'model',
+            'created',
+        ]

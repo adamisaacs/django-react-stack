@@ -17,3 +17,11 @@ class Chat(models.Model):
 
     def __str__(self):
         return self.message
+
+
+class NeuralNet(models.Model):
+    model = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.model
