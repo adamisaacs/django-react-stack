@@ -1,13 +1,11 @@
-from django.shortcuts import render
-from rest_framework import viewsets
-from django.http import JsonResponse, HttpResponseNotAllowed
+from rest_framework import viewsets, views
+from rest_framework.response import Response
 
-from django.views.decorators.csrf import csrf_exempt
-
-from .serializers import TodoSerializer, ChatSerializer
+from .serializers import TodoSerializer, ChatSerializer, TrainNetworkSerializer
 from .models import Todo, Chat
 
 from .components.neuralnet import train_network
+
 
 # Create your views here.
 class TodoViewSet(viewsets.ModelViewSet):
@@ -22,11 +20,9 @@ class ChatViewSet(viewsets.ModelViewSet):
 
 
 # Neural Network
-@csrf_exempt
-def TrainNetwork(request):
-    if request.method == 'POST':
+class TrainNetworkView(views.APIView):
+    serializer_class = TrainNetworkSerializer
+
+    def post(self, request, format=None):
         accuracy = train_network()
-        response =  JsonResponse({'accuracy': accuracy})
-        return response
-    else:
-        return HttpResponseNotAllowed(['POST'])
+        return Response({'accuracy': accuracy})

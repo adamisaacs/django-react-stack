@@ -21,3 +21,7 @@ class ChatSerializer(serializers.HyperlinkedModelSerializer):
             'message',
             'messageTime',
         ]
+
+
+class TrainNetworkSerializer(serializers.Serializer):
+    pass
