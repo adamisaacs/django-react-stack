@@ -48,14 +48,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'sslserver',
     'api.apps.ApiConfig',
-    'home.apps.HomeConfig',
-    'apps.apps.AppsConfig',
-    'neuralnet.apps.NeuralnetConfig',
-    'chat.apps.ChatConfig',
-    'todo.apps.TodoConfig',
-    'iss.apps.IssConfig',
-    'clock.apps.ClockConfig',
-    'ttt.apps.TttConfig',
+    'pages.apps.PagesConfig',
 ]
 
 MIDDLEWARE = [

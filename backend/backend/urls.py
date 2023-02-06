@@ -34,14 +34,7 @@ urlpatterns = [
 
     path('api/', include('api.urls')),
 
-    path('', include('home.urls')),
-    path('apps/', include('apps.urls')),
-    path('apps/neuralnet/', include('neuralnet.urls')),
-    path('apps/chat/', include('chat.urls')),
-    path('apps/todo/', include('todo.urls')),
-    path('apps/iss/', include('iss.urls')),
-    path('apps/clock/', include('clock.urls')),
-    path('apps/ttt/', include('ttt.urls')),
+    path('', include('pages.urls')),
 
     #re_path(r'^(?:.*)/?$', render_react), # Use React for every other URL (404 handling, etc)
 ]
