@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'api.apps.ApiConfig',
     'home.apps.HomeConfig',
     'apps.apps.AppsConfig',
+    'neuralnet.apps.NeuralnetConfig',
     'chat.apps.ChatConfig',
     'todo.apps.TodoConfig',
     'iss.apps.IssConfig',
@@ -59,7 +60,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
-
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

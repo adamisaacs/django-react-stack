@@ -36,6 +36,7 @@ urlpatterns = [
 
     path('', include('home.urls')),
     path('apps/', include('apps.urls')),
+    path('apps/neuralnet/', include('neuralnet.urls')),
     path('apps/chat/', include('chat.urls')),
     path('apps/todo/', include('todo.urls')),
     path('apps/iss/', include('iss.urls')),

@@ -87,8 +87,7 @@ class Chat extends React.Component {
                             const messages = document.getElementById('messages');
                             messages.scrollTop = messages.scrollHeight;
                         });
-                    }
-                    else {
+                    } else {
                         this.setState({
                             isLoaded: true,
                             info: result,

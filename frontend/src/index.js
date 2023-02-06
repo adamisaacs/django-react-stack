@@ -13,6 +13,7 @@ import {
 import Root from './pages/root/root';
 import Home from './pages/Home/home';
 import Apps from './pages/Apps/apps';
+import NeuralNet from './pages/NeuralNet/neuralnet';
 import Chat from './pages/Chat/chat';
 import TTT from './pages/TTT/ttt';
 import Clock from './pages/Clock/clock';
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
           {
             path: 'apps/',
             element: <Apps />,
+          },
+          {
+            path: 'apps/neuralnet/',
+            element: <NeuralNet />,
           },
           {
             path: 'apps/chat/',

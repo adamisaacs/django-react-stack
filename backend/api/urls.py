@@ -8,5 +8,7 @@ router.register(r'chats', views.ChatViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path('auth/', include('rest_framework.urls', namespace='rest_framework')),
+
+    path('train_network/', views.TrainNetwork, name='TrainNetwork'),
 ]
