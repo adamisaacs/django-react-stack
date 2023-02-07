@@ -6,9 +6,9 @@ class TodoSerializer(serializers.HyperlinkedModelSerializer):
         model = Todo
         fields = [
             'url',
+            'created',
             'title',
             'description',
-            'created',
         ]
 
 
@@ -17,9 +17,9 @@ class ChatSerializer(serializers.HyperlinkedModelSerializer):
         model = Chat
         fields = [
             'url',
+            'messageTime',
             'user',
             'message',
-            'messageTime',
         ]
 
 
@@ -28,6 +28,10 @@ class NeuralNetSerializer(serializers.HyperlinkedModelSerializer):
         model = NeuralNet
         fields = [
             'url',
-            'model',
+            'id',
+            'name',
             'created',
+            'model',
+            'weights',
+            'accuracy',
         ]
