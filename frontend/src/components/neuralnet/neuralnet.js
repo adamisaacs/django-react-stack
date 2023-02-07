@@ -224,7 +224,7 @@ class NeuralNet extends React.Component {
                                                     Accuracy on test set: Training...
                                                 </Container>
                                                 :
-                                                modelData.accuracy != '' ?
+                                                modelData.accuracy !== '' ?
                                                     <Container fluid='true'>
                                                         Accuracy on test set:&nbsp;
                                                         {(modelData.accuracy * 100).toFixed(2)}%
@@ -242,6 +242,14 @@ class NeuralNet extends React.Component {
                                                     Train model (5 epochs)
                                                 </Button>
                                             </Form>
+                                        </Container>
+                                        <Container fluid='true'>
+                                            <canvas
+                                                id='canvas'
+                                                height='280px'
+                                                width='280px'
+                                                className='border border-5 border-dark'
+                                            ></canvas>
                                         </Container>
                                     </Container>
                                     :
