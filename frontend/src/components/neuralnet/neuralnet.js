@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import {
     Container,
     Button,
@@ -244,12 +244,7 @@ class NeuralNet extends React.Component {
                                             </Form>
                                         </Container>
                                         <Container fluid='true'>
-                                            <canvas
-                                                id='canvas'
-                                                height='280px'
-                                                width='280px'
-                                                className='border border-5 border-dark'
-                                            ></canvas>
+                                            <DrawingArea />
                                         </Container>
                                     </Container>
                                     :
@@ -263,3 +258,98 @@ class NeuralNet extends React.Component {
 }
 
 export default NeuralNet;
+
+
+function DrawingArea() {
+    const canvasRef = useRef(null);
+    const downsizedCanvasRef = useRef(null);
+    const [rect, setRect] = useState(null);
+
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        setRect(canvas.getBoundingClientRect());
+        window.addEventListener("resize", updateRect);
+        window.addEventListener("scroll", updateRect);
+
+        return () => {
+            window.removeEventListener("resize", updateRect);
+            window.removeEventListener("scroll", updateRect);
+        };
+
+        function updateRect() {
+            setRect(canvas.getBoundingClientRect());
+        }
+    }, [canvasRef]);
+
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        const context = canvas.getContext('2d');
+        const downsizedCanvas = downsizedCanvasRef.current;
+        const downsizedContext = downsizedCanvas.getContext('2d');
+        context.strokeStyle = 'black';
+        context.lineWidth = 25;
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDrawing);
+        let isDrawing = false;
+
+        return () => {
+            canvas.removeEventListener('mousedown', startDrawing);
+            canvas.removeEventListener('mousemove', draw);
+            canvas.removeEventListener('mouseup', stopDrawing);
+        }
+
+        function startDrawing(event) {
+            isDrawing = true;
+            context.beginPath();
+            context.moveTo(event.clientX - rect.left, event.clientY - rect.top);
+        }
+        function draw(event) {
+            if (isDrawing) {
+                context.lineTo(event.clientX - rect.left, event.clientY - rect.top);
+                context.stroke();
+            }
+            drawNewCanvas();
+        }
+        function stopDrawing() {
+            isDrawing = false;
+        }
+        function drawNewCanvas() {
+            const img = new Image();
+            img.src = canvas.toDataURL();
+            downsizedContext.drawImage(img, 0, 0, 28, 28);
+            return img.src;
+        }
+    }, [rect]);
+
+    const clearCanvas = () => {
+        const canvas = canvasRef.current;
+        const context = canvas.getContext('2d');
+        const downsizedCanvas = downsizedCanvasRef.current;
+        const downsizedContext = downsizedCanvas.getContext('2d');
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        downsizedContext.clearRect(0, 0, downsizedCanvas.width, downsizedCanvas.height);
+    }
+
+    return (
+        <>
+            <canvas
+                ref={canvasRef}
+                id='canvas'
+                height='280px'
+                width='280px'
+                className='border border-5 border-dark'
+            ></canvas>
+            <canvas
+                ref={downsizedCanvasRef}
+                id='downsizedCanvas'
+                height='28px'
+                width='28px'
+                className='border border-3 border-dark'
+            ></canvas>
+            <Button variant='dark' onClick={clearCanvas}>
+                Clear
+            </Button>
+        </>
+    );
+}
