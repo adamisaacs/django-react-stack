@@ -11,26 +11,26 @@ def create_network():
     input_shape = (28, 28, 1)
 
     # Build the model
-    model = keras.Sequential(
-        [
-            keras.Input(shape=input_shape),
-            layers.Flatten(),
-            layers.Dense(128, activation="relu"),
-            layers.Dense(num_classes, activation="softmax")
-        ]
-    )
     # model = keras.Sequential(
     #     [
     #         keras.Input(shape=input_shape),
-    #         layers.Conv2D(32, kernel_size=(3, 3), activation="relu"),
-    #         layers.MaxPooling2D(pool_size=(2, 2)),
-    #         layers.Conv2D(64, kernel_size=(3, 3), activation="relu"),
-    #         layers.MaxPooling2D(pool_size=(2, 2)),
     #         layers.Flatten(),
-    #         layers.Dropout(0.5),
-    #         layers.Dense(num_classes, activation="softmax"),
+    #         layers.Dense(128, activation="relu"),
+    #         layers.Dense(num_classes, activation="softmax")
     #     ]
     # )
+    model = keras.Sequential(
+        [
+            keras.Input(shape=input_shape),
+            layers.Conv2D(32, kernel_size=(3, 3), activation="relu"),
+            layers.MaxPooling2D(pool_size=(2, 2)),
+            layers.Conv2D(64, kernel_size=(3, 3), activation="relu"),
+            layers.MaxPooling2D(pool_size=(2, 2)),
+            layers.Flatten(),
+            layers.Dropout(0.5),
+            layers.Dense(num_classes, activation="softmax"),
+        ]
+    )
 
     model.summary()
 
@@ -68,8 +68,8 @@ def train_network(serialized_model, serialized_weights=None):
     y_test = keras.utils.to_categorical(y_test, num_classes)
 
     # Train the model
-    batch_size = 125
-    epochs = 5
+    batch_size = 250
+    epochs = 1
 
     model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
 
@@ -88,3 +88,27 @@ def train_network(serialized_model, serialized_weights=None):
     # Serialize list to JSON
     weights_json = json.dumps(weights_list)
     return weights_json, score[1]
+
+
+def test_network(serialized_model, serialized_weights, serialized_test_image):
+    model = model_from_json(serialized_model)
+
+    if serialized_weights:
+        weights_list = json.loads(serialized_weights)
+        weights = [np.array(w) for w in weights_list]
+        model.set_weights(weights)
+
+    model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
+
+    # preprocess test image data
+    test_image = np.array(serialized_test_image)
+    test_image = np.expand_dims(test_image, axis=-1)
+    test_image = np.expand_dims(test_image, axis=0)
+    print(test_image.shape)
+
+    # make prediction
+    predictions = model.predict(test_image)
+    predicted_digit = np.argmax(predictions)
+
+    # return prediction
+    return predicted_digit
